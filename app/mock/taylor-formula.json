@@ -1,0 +1,141 @@
+{
+    "title": "泰勒公式测试题",
+    "description": "本测试旨在检验你对泰勒公式（Taylor series）及其应用的理解，包括展开式、余项估计和函数近似。",
+    "questions": [
+        {
+            "id": "q1",
+            "question": "下列关于泰勒公式的叙述中，哪一项是正确的？",
+            "hint": "回忆泰勒公式是用多项式近似光滑函数的一种方法。",
+            "options": [
+                {
+                    "text": "泰勒公式仅适用于线性函数",
+                    "isCorrect": false,
+                    "explanation": "错误。泰勒公式可用于任意在展开点处具有足够阶导数的光滑函数。"
+                },
+                {
+                    "text": "泰勒公式是将函数在某一点附近展开为幂级数的公式",
+                    "isCorrect": true,
+                    "explanation": "正确。泰勒公式通过在某点展开函数的导数信息，得到幂级数近似。"
+                },
+                {
+                    "text": "泰勒公式不能用于三角函数的展开",
+                    "isCorrect": false,
+                    "explanation": "错误。泰勒公式可用于三角函数、指数函数等解析函数。"
+                },
+                {
+                    "text": "泰勒公式与麦克劳林公式完全不同",
+                    "isCorrect": false,
+                    "explanation": "错误。麦克劳林公式是泰勒公式在x=0处展开的特例。"
+                }
+            ]
+        },
+        {
+            "id": "q2",
+            "question": "函数 e^x 的麦克劳林展开式是什么？",
+            "hint": "麦克劳林展开是在 x=0 处的泰勒展开。",
+            "options": [
+                {
+                    "text": "1 + x + x^2 + x^3 + ...",
+                    "isCorrect": false,
+                    "explanation": "错误。系数需要除以阶乘。"
+                },
+                {
+                    "text": "1 + x + x^2/2! + x^3/3! + ...",
+                    "isCorrect": true,
+                    "explanation": "正确。e^x 的展开式为 ∑(x^n / n!)。"
+                },
+                {
+                    "text": "x + x^2/2 + x^3/3 + ...",
+                    "isCorrect": false,
+                    "explanation": "错误。缺少常数项且分母错误。"
+                },
+                {
+                    "text": "1 - x + x^2 - x^3 + ...",
+                    "isCorrect": false,
+                    "explanation": "错误。那是 (1+x)^(-1) 的展开形式。"
+                }
+            ]
+        },
+        {
+            "id": "q3",
+            "question": "sin(x) 的泰勒展开式中，含有哪类幂次的项？",
+            "hint": "考虑 sin(x) 的导数在 x=0 处的取值规律。",
+            "options": [
+                {
+                    "text": "仅含偶次幂项",
+                    "isCorrect": false,
+                    "explanation": "错误。偶次幂项对应 cos(x) 的展开。"
+                },
+                {
+                    "text": "仅含奇次幂项",
+                    "isCorrect": true,
+                    "explanation": "正确。sin(x)=x - x^3/3! + x^5/5! - ...，只含奇次幂。"
+                },
+                {
+                    "text": "既含奇次又含偶次幂项",
+                    "isCorrect": false,
+                    "explanation": "错误。sin(x) 的展开中没有偶次幂。"
+                },
+                {
+                    "text": "仅含常数项",
+                    "isCorrect": false,
+                    "explanation": "错误。sin(x) 在 x=0 处为 0，没有常数项。"
+                }
+            ]
+        },
+        {
+            "id": "q4",
+            "question": "若函数 f(x) 的二阶泰勒展开式为 f(x) ≈ f(a) + f'(a)(x-a) + (1/2)f''(a)(x-a)^2，则其余项阶为多少？",
+            "hint": "考虑已展开到二阶，下一项对应三阶导数。",
+            "options": [
+                {
+                    "text": "O((x-a))",
+                    "isCorrect": false,
+                    "explanation": "错误。那是一次余项。"
+                },
+                {
+                    "text": "O((x-a)^2)",
+                    "isCorrect": false,
+                    "explanation": "错误。那对应一阶展开的余项。"
+                },
+                {
+                    "text": "O((x-a)^3)",
+                    "isCorrect": true,
+                    "explanation": "正确。展开到二阶时，余项为 O((x-a)^3)。"
+                },
+                {
+                    "text": "O((x-a)^4)",
+                    "isCorrect": false,
+                    "explanation": "错误。那是三阶展开的余项。"
+                }
+            ]
+        },
+        {
+            "id": "q5",
+            "question": "泰勒多项式在数值计算中的主要用途是什么？",
+            "hint": "考虑泰勒展开在函数近似中的作用。",
+            "options": [
+                {
+                    "text": "用于精确求解所有非线性方程",
+                    "isCorrect": false,
+                    "explanation": "错误。泰勒多项式仅提供近似。"
+                },
+                {
+                    "text": "用于近似计算函数值，提高计算效率",
+                    "isCorrect": true,
+                    "explanation": "正确。泰勒多项式常用于函数近似、误差分析和数值算法中。"
+                },
+                {
+                    "text": "用于符号积分",
+                    "isCorrect": false,
+                    "explanation": "错误。积分可用泰勒展开，但不是其主要用途。"
+                },
+                {
+                    "text": "用于随机模拟",
+                    "isCorrect": false,
+                    "explanation": "错误。与泰勒展开无直接关系。"
+                }
+            ]
+        }
+    ]
+}
