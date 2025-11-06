@@ -1,8 +1,11 @@
 import Image from 'next/image';
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import { QuizCompleteProps } from '../types';
 
 const QuizComplete = ({ score, totalQuestions, accuracy, elapsedTime, onRetake }: QuizCompleteProps) => {
+    const { t } = useTranslation();
+    
     const formatTime = (ms: number) => {
         const totalSeconds = Math.floor(ms / 1000);
         const minutes = Math.floor(totalSeconds / 60);
@@ -44,7 +47,7 @@ const QuizComplete = ({ score, totalQuestions, accuracy, elapsedTime, onRetake }
                         transition={{ delay: 0.5 }}
                         className="font-semibold text-[18px] leading-[26px] tracking-[-0.45px] text-[#0d0d0d] text-center whitespace-pre"
                     >
-                        测验完成！
+                        {t('quiz.completeTitle')}
                     </motion.p>
                 </motion.div>
                 
@@ -77,7 +80,7 @@ const QuizComplete = ({ score, totalQuestions, accuracy, elapsedTime, onRetake }
                                 </p>
                             </div>
                             <p className="font-normal text-[14px] leading-[20px] tracking-[-0.18px] text-[#8f8f8f]">
-                                得分
+                                {t('quiz.score')}
                             </p>
                         </motion.div>
                         
@@ -100,7 +103,7 @@ const QuizComplete = ({ score, totalQuestions, accuracy, elapsedTime, onRetake }
                                 {accuracy}%
                             </motion.p>
                             <p className="font-normal text-[14px] leading-[20px] tracking-[-0.18px] text-[#8f8f8f]">
-                                准确率
+                                {t('quiz.accuracy')}
                             </p>
                         </motion.div>
                         
@@ -123,7 +126,7 @@ const QuizComplete = ({ score, totalQuestions, accuracy, elapsedTime, onRetake }
                                 {formatTime(elapsedTime)}
                             </motion.p>
                             <p className="font-normal text-[14px] leading-[20px] tracking-[-0.18px] text-[#8f8f8f]">
-                                用时
+                                {t('quiz.timeSpent')}
                             </p>
                         </motion.div>
                     </motion.div>
@@ -142,7 +145,7 @@ const QuizComplete = ({ score, totalQuestions, accuracy, elapsedTime, onRetake }
                             onClick={onRetake}
                         >
                             <p className="font-medium text-[14px] leading-[20px] tracking-[-0.18px] text-[#0d0d0d] whitespace-pre">
-                                重新测验
+                                {t('quiz.retake')}
                             </p>
                         </motion.button>
                     </motion.div>

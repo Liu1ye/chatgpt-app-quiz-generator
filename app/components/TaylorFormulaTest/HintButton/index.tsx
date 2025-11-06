@@ -1,6 +1,7 @@
 import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 
 interface HintButtonProps {
     hint: string;
@@ -9,6 +10,7 @@ interface HintButtonProps {
 }
 
 const HintButton = ({ hint, showHint, onToggleHint }: HintButtonProps) => {
+    const { t } = useTranslation();
     const hintButtonRef = useRef<HTMLDivElement>(null);
     
     useEffect(() => {
@@ -42,7 +44,7 @@ const HintButton = ({ hint, showHint, onToggleHint }: HintButtonProps) => {
                             >
                                 <Image src='/lightbulb-glow.svg' alt="LightbulbGlow" width={16} height={16} />
                             </motion.div>
-                            <span className='text-[14px] font-[600]'>提示</span>
+                            <span className='text-[14px] font-[600]'>{t('quiz.hint')}</span>
                         </div>
                         <motion.div
                             initial={{ opacity: 0 }}
@@ -67,7 +69,7 @@ const HintButton = ({ hint, showHint, onToggleHint }: HintButtonProps) => {
                 onClick={onToggleHint}
             >
                 <p className="font-medium text-[14px] leading-[20px] tracking-[-0.18px] text-[#5d5d5d] whitespace-pre">
-                    显示提示
+                    {showHint ? t('quiz.hideHint') : t('quiz.showHint')}
                 </p>
                 <motion.div
                     animate={{ rotate: showHint ? 180 : 0 }}

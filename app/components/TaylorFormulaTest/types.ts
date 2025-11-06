@@ -11,6 +11,12 @@ export interface Question {
     options: QuestionOption[];
 }
 
+export interface QuizData {
+    title: string;
+    description: string;
+    questions: Question[];
+}
+
 export interface QuizCompleteProps {
     score: number;
     totalQuestions: number;

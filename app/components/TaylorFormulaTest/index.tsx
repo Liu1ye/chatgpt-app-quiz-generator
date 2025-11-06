@@ -1,13 +1,21 @@
 'use client';
 
 import { useState, useMemo } from 'react';
+import { useWidgetProps } from '@/app/hooks';
 import taylorFormulaTestData from "@/app/mock/taylor-formula.json";
 import QuizQuestion from './QuizQuestion';
 import QuizComplete from './QuizComplete';
 import { QuizManager } from './QuizManager';
+import { QuizData, Question } from './types';
 
 const TaylorFormulaTest = () => {
-    const quizManager = useMemo(() => new QuizManager(taylorFormulaTestData.questions), []);
+    // 从 ChatGPT 获取数据，如果没有则使用 mock 数据
+    const rawData = useWidgetProps(() => 
+        taylorFormulaTestData as any
+    );
+    const quizData: QuizData = rawData as QuizData;
+
+    const quizManager = useMemo(() => new QuizManager(quizData.questions), [quizData.questions]);
     
     const [showHint, setShowHint] = useState(false);
     const [isCompleted, setIsCompleted] = useState(false);

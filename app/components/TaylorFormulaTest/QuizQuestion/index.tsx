@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import QuizOption from '../QuizOption';
 import HintButton from '../HintButton';
 import { Question } from '../types';
@@ -26,6 +27,7 @@ const QuizQuestion = ({
     onPrevious,
     onNext
 }: QuizQuestionProps) => {
+    const { t } = useTranslation();
     const correctAnswerIndex = question.options.findIndex(opt => opt.isCorrect);
     const isLastQuestion = currentQuestionIndex === totalQuestions - 1;
 
@@ -91,7 +93,7 @@ const QuizQuestion = ({
                             disabled={currentQuestionIndex === 0}
                         >
                             <p className="font-medium text-[14px] leading-[20px] tracking-[-0.18px] text-[#0d0d0d] whitespace-pre">
-                                上一题
+                                {t('quiz.previous')}
                             </p>
                         </motion.button>
                         <motion.button
@@ -111,7 +113,7 @@ const QuizQuestion = ({
                                     ? 'text-[#ffffff]'
                                     : 'text-[#0d0d0d]'
                             }`}>
-                                {isLastQuestion ? '完成' : '下一题'}
+                                {isLastQuestion ? t('quiz.complete') : t('quiz.next')}
                             </p>
                         </motion.button>
                     </div>
