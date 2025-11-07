@@ -2,18 +2,27 @@
 
 import { useState, useMemo } from 'react';
 import { useWidgetProps } from '@/app/hooks';
-import taylorFormulaTestData from "@/app/mock/taylor-formula.json";
 import QuizQuestion from './QuizQuestion';
 import QuizComplete from './QuizComplete';
 import { QuizManager } from './QuizManager';
 import { QuizData, Question } from './types';
 
 const TaylorFormulaTest = () => {
-    // 从 ChatGPT 获取数据，如果没有则使用 mock 数据
-    const rawData = useWidgetProps(() => 
-        taylorFormulaTestData as any
-    );
-    const quizData: QuizData = rawData as QuizData;
+    // 从 ChatGPT 获取数据
+    const rawData = useWidgetProps<Record<string, unknown>>();
+    
+    // 如果没有数据，显示加载状态
+    if (!rawData) {
+        return (
+            <div className="flex items-center justify-center min-h-screen p-4">
+                <div className="text-center">
+                    <p className="text-gray-600">等待 ChatGPT 返回数据...</p>
+                </div>
+            </div>
+        );
+    }
+    
+    const quizData = rawData as unknown as QuizData;
 
     const quizManager = useMemo(() => new QuizManager(quizData.questions), [quizData.questions]);
     

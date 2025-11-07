@@ -18,9 +18,9 @@ const QuizComplete = ({ score, totalQuestions, accuracy, elapsedTime, onRetake }
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="bg-[#ffffff] border-[0.5px] border-[rgba(13,13,13,0.15)] border-solid rounded-[24px] w-full h-full max-w-[800px] mx-auto"
+            className="bg-[#ffffff] border-[0.5px] border-[rgba(13,13,13,0.15)] border-solid rounded-[24px] w-full max-w-[800px] mx-auto"
         >
-            <div className="flex flex-col items-center overflow-clip rounded-[inherit] h-full">
+            <div className="flex flex-col items-center overflow-clip rounded-[inherit]">
                 {/* 标题 */}
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}

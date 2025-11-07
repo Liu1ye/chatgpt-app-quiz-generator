@@ -99,7 +99,18 @@ const handler = createMcpHandler(async (server) => {
       _meta: widgetMeta(quizGeneratorWidget),
     },
     async (args) => {
-      const { topic, numQuestions, difficulty, language, title, description, questions } = args;
+      // 如果 args 是字符串，尝试解析它
+      let parsedArgs = args;
+      if (typeof args === 'string') {
+        try {
+          parsedArgs = JSON.parse(args);
+        } catch (e) {
+          console.error('Failed to parse args:', e);
+          throw new Error('Invalid JSON in args');
+        }
+      }
+      
+      const { topic, numQuestions, difficulty, language, title, description, questions } = parsedArgs;
       
       // 根据语言生成响应消息
       const getResponseMessage = (lang: string, topic: string, num: number, diff: string) => {

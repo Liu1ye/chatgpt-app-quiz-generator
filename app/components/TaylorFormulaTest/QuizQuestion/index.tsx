@@ -38,9 +38,9 @@ const QuizQuestion = ({
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: -20 }}
             transition={{ duration: 0.3 }}
-            className="bg-[#ffffff] border-[0.5px] border-[rgba(13,13,13,0.15)] border-solid rounded-[24px] w-full h-full max-w-[800px] mx-auto"
+            className="bg-[#ffffff] border-[0.5px] border-[rgba(13,13,13,0.15)] border-solid rounded-[24px] w-full max-w-[800px] mx-auto"
         >
-            <div className="flex flex-col items-center overflow-clip rounded-[inherit] h-full">
+            <div className="flex flex-col items-center overflow-clip rounded-[inherit]">
                 {/* 标题 */}
                 <motion.div
                     initial={{ opacity: 0, y: -10 }}
@@ -72,7 +72,7 @@ const QuizQuestion = ({
                 </div>
 
                 {/* Card footer */}
-                <div className="box-border flex gap-[8px] items-center p-[16px] w-full mt-auto">
+                <div className="box-border flex gap-[8px] items-center p-[16px] w-full border-t border-[rgba(13,13,13,0.05)]">
                     <div className="flex-1 flex gap-[8px] items-start">
                         <HintButton
                             hint={question.hint}
