@@ -5,14 +5,16 @@ import { useWidgetProps } from '@/app/hooks';
 import QuizQuestion from './QuizQuestion';
 import QuizComplete from './QuizComplete';
 import { QuizManager } from './QuizManager';
+import { QuizData } from './types';
 
 const TaylorFormulaTest = () => {
-  const rawData = useWidgetProps<any>();
+  const widgetProps = useWidgetProps<{ language?: string; data?: QuizData }>();
+  const quizData = widgetProps?.data;
 
   const quizManager = useMemo(() => {
-    if (!rawData?.questions?.length) return null;
-    return new QuizManager(rawData.questions);
-  }, [rawData?.questions]);
+    if (!quizData?.questions?.length) return null;
+    return new QuizManager(quizData.questions);
+  }, [quizData?.questions]);
 
   const [showHint, setShowHint] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
