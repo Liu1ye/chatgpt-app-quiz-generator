@@ -39,7 +39,7 @@ const handler = createMcpHandler(async (server) => {
     invoked: "Quiz loaded",
     html: html,
     description: "Generates a quiz based on the user's input",
-    widgetDomain: "https://nextjs.org/docs",
+    widgetDomain: "https://sider.ai",
   };
   server.registerResource(
     "quiz-generator-widget",
