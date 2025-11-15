@@ -1,9 +1,9 @@
+import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import QuizOption from '../QuizOption';
 import HintButton from '../HintButton';
 import { Question } from '../types';
-import './index.css';
 
 interface QuizQuestionProps {
     question: Question;
@@ -31,9 +31,55 @@ const QuizQuestion = ({
     const { t } = useTranslation();
     const correctAnswerIndex = question.options.findIndex(opt => opt.isCorrect);
     const isLastQuestion = currentQuestionIndex === totalQuestions - 1;
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    // 隐藏滚动条
+    useEffect(() => {
+        const container = containerRef.current;
+        if (!container) return;
+
+        // 创建全局样式（只创建一次）
+        const styleId = 'quiz-hide-scrollbar-style';
+        if (!document.getElementById(styleId)) {
+            const style = document.createElement('style');
+            style.id = styleId;
+            style.textContent = `
+                html, body, .quiz-question-container, .quiz-question-container * {
+                    scrollbar-width: none !important;
+                    -ms-overflow-style: none !important;
+                }
+                html::-webkit-scrollbar, body::-webkit-scrollbar,
+                .quiz-question-container::-webkit-scrollbar,
+                .quiz-question-container *::-webkit-scrollbar {
+                    display: none !important;
+                    width: 0 !important;
+                    height: 0 !important;
+                }
+            `;
+            document.head.appendChild(style);
+        }
+
+        // 隐藏滚动条的函数
+        const hideScrollbars = () => {
+            [container, document.body, document.documentElement].forEach(el => {
+                if (el) {
+                    el.style.scrollbarWidth = 'none';
+                    el.style.setProperty('-ms-overflow-style', 'none', 'important');
+                }
+            });
+        };
+
+        hideScrollbars();
+
+        // 定期检查并隐藏滚动条
+        const intervalId = setInterval(hideScrollbars, 50);
+
+        return () => clearInterval(intervalId);
+    }, [currentQuestionIndex, showHint, selectedOption]);
 
     return (
         <motion.div
+            ref={containerRef}
             key={currentQuestionIndex}
             initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
