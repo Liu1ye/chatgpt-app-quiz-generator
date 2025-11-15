@@ -7,4 +7,4 @@ set -e
 SSH_HOST="75.101.230.185"
 SSH_USER="dog"
 
-ssh "${SSH_USER}@${SSH_HOST}" 'cd /data/www/quiz-generator-chatgpt-app && git pull origin main && docker-compose down && docker-compose up -d --build'
+ssh "${SSH_USER}@${SSH_HOST}" 'cd /data/www/chatgpt-app-quiz-generator && git pull origin main && docker-compose down && docker-compose up -d --build'
