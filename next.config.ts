@@ -87,6 +87,7 @@ const webpackSvgr: NextConfig['webpack'] = (config, context) => {
 const nextConfig: NextConfig = {
   assetPrefix: baseURL,
   sassOptions: {},
+  output: 'standalone',
   webpack: (config, context) => {
     webpackSvgr(config, context)
     return config
