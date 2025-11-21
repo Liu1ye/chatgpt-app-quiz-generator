@@ -59,7 +59,7 @@ This tool requires user authentication.`,
         { type: "oauth2" as const, scopes: ["read:stuff"] },
       ],
       annotations: { readOnlyHint: true }
-    } as any, // 临时使用 any 绕过类型检查，等待 mcp-handler 更新类型定义
+    } as any,
     async (input, extra) => {
       try {
         const token = extra?.authInfo?.token;

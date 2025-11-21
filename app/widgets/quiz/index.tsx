@@ -17,7 +17,7 @@ const Quiz = () => {
 
   const quizManager = useMemo(() => {
     if (!quizData?.questions?.length) return null;
-    return new QuizManager(quizData, sendFollowUpMessage);
+    return new QuizManager(quizData);
   }, [quizData?.questions]);
 
   const [showHint, setShowHint] = useState(false);
@@ -67,8 +67,8 @@ const Quiz = () => {
     forceUpdate();
   }, [quizManager, forceUpdate]);
 
-  const handleSave = () => {
-    const res = quizManager?.save()
+  const handleSave = async () => {
+    await quizManager?.save(sendFollowUpMessage)
   }
 
   // 加载状态

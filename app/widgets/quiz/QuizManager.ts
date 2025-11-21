@@ -8,16 +8,14 @@ export class QuizManager {
     private startTime: number;
     private endTime: number | null;
     private info: any
-    private sendFollowUpMessage: any
 
-    constructor(quizData: QuizData, sendFollowUpMessage: any) {
+    constructor(quizData: QuizData) {
         this.questions = quizData.questions;
         this.answers = new Array(quizData.questions.length).fill(null);
         this.currentQuestionIndex = 0;
         this.startTime = Date.now();
         this.endTime = null;
         this.info = quizData
-        this.sendFollowUpMessage = sendFollowUpMessage
     }
 
     // 获取当前题目
@@ -165,7 +163,7 @@ export class QuizManager {
     }
 
     // 保存题目
-    async save(): Promise<void> {
+    async save(sendFollowUpMessage: (prompt:string) => Promise<void>): Promise<void> {
         const error = this.answers.map((i, j) => {
             if(i !== null){
                 return this.questions[j].options[i].isCorrect ? true : false
@@ -182,6 +180,6 @@ export class QuizManager {
             }
         }
 
-        return this.sendFollowUpMessage({prompt: '1+1=几'})
+        sendFollowUpMessage(`Call the quiz-saver tool and pass some data to it, data:'${JSON.stringify(payload)}'`)
     }
 }
