@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
+import { ChevronUpMdIcon, LightbulbGlowIcon } from '@/app/assets/icons';
 
 interface HintButtonProps {
     hint: string;
@@ -42,7 +43,7 @@ const HintButton = ({ hint, showHint, onToggleHint }: HintButtonProps) => {
                                 animate={{ rotate: [0, 10, -10, 0] }}
                                 transition={{ duration: 0.5, delay: 0.2 }}
                             >
-                                <Image src='/lightbulb-glow.svg' alt="LightbulbGlow" width={16} height={16} />
+                                <LightbulbGlowIcon size={16} />
                             </motion.div>
                             <span className='text-[14px] font-[600] text-text-primary'>{t('quiz.hint')}</span>
                         </div>
@@ -76,7 +77,7 @@ const HintButton = ({ hint, showHint, onToggleHint }: HintButtonProps) => {
                     transition={{ duration: 0.3 }}
                     className="w-[16px] h-[16px] flex items-center justify-center"
                 >
-                    <Image src='/chevron-up-md.svg' alt="ChevronUpMd" width={16} height={16} />
+                   <ChevronUpMdIcon size={16} />
                 </motion.div>
             </motion.button>
         </div>

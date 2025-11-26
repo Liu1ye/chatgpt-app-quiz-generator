@@ -12,6 +12,7 @@
     "accuracy": "Precisión",
     "timeSpent": "Tiempo empleado",
     "retake": "Repetir cuestionario",
-    "hint": "Pista"
+    "hint": "Pista",
+    "save": "Guardar cuestionario"
   }
 }

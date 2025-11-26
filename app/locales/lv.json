@@ -12,6 +12,7 @@
     "accuracy": "Precizitāte",
     "timeSpent": "Pavadītais laiks",
     "retake": "Atkārtot testu",
-    "hint": "Padoms"
+    "hint": "Padoms",
+    "save": "Saglabāt viktorīnu"
   }
 }

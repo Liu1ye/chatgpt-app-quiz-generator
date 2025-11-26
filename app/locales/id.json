@@ -12,6 +12,7 @@
     "accuracy": "Akurasi",
     "timeSpent": "Waktu yang Dihabiskan",
     "retake": "Ulang Kuis",
-    "hint": "Petunjuk"
+    "hint": "Petunjuk",
+    "save": "Simpan Kuis"
   }
 }

@@ -71,8 +71,6 @@ KaTeX syntax examples:
         language: z.string().default("en").describe("Language code (ISO 639-1, e.g., 'en', 'zh-CN', 'ja'). Default: en"),
         data: z.object({
           topic: z.string().describe("The topic for the quiz"),
-          numQuestions: z.number().int().min(1).max(10).default(5).describe("Number of questions to generate"),
-          difficulty: z.enum(["easy", "medium", "hard"]).default("medium").describe("Difficulty level"),
           title: z.string().describe("Quiz title (e.g., 'Python Programming Quiz')"),
           description: z.string().describe("Brief description of the quiz"),
           questions: z.array(

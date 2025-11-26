@@ -12,6 +12,7 @@
     "accuracy": "Precizie",
     "timeSpent": "Timp Petrecut",
     "retake": "Reia Chestionarul",
-    "hint": "Indiciu"
+    "hint": "Indiciu",
+    "save": "Salvează chestionarul"
   }
 }

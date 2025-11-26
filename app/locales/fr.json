@@ -12,6 +12,7 @@
     "accuracy": "Précision",
     "timeSpent": "Temps passé",
     "retake": "Repasser le quiz",
-    "hint": "Indice"
+    "hint": "Indice",
+    "save": "Enregistrer le quiz"
   }
 }

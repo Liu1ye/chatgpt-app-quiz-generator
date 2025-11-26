@@ -12,6 +12,7 @@
     "accuracy": "准确率",
     "timeSpent": "花费时间",
     "retake": "重做测验",
-    "hint": "提示"
+    "hint": "提示",
+    "save": "保存测验"
   }
 }

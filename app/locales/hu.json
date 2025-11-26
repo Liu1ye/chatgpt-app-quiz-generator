@@ -12,6 +12,7 @@
     "accuracy": "Pontosság",
     "timeSpent": "Eltöltött idő",
     "retake": "Kvíz újra",
-    "hint": "Javaslat"
+    "hint": "Javaslat",
+    "save": "Kvíz mentése"
   }
 }

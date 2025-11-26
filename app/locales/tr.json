@@ -12,6 +12,7 @@
     "accuracy": "Doğruluk",
     "timeSpent": "Geçen Süre",
     "retake": "Sınavı Tekrar Al",
-    "hint": "İpucu"
+    "hint": "İpucu",
+    "save": "Quiz'i Kaydet"
   }
 }

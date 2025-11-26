@@ -12,6 +12,7 @@
     "accuracy": "Precisió",
     "timeSpent": "Temps emprat",
     "retake": "Repetir el quiz",
-    "hint": "Pista"
+    "hint": "Pista",
+    "save": "Desa el qüestionari"
   }
 }

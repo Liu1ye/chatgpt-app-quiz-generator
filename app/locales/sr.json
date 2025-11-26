@@ -12,6 +12,7 @@
     "accuracy": "Tačnost",
     "timeSpent": "Provedeno vreme",
     "retake": "Ponovo uradi kviz",
-    "hint": "Savjet"
+    "hint": "Savjet",
+    "save": "Sačuvaj kviz"
   }
 }

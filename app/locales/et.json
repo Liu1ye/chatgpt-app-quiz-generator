@@ -12,6 +12,7 @@
     "accuracy": "Täpsus",
     "timeSpent": "Kulutatud aeg",
     "retake": "Korda testi",
-    "hint": "Vihje"
+    "hint": "Vihje",
+    "save": "Salvesta viktoriin"
   }
 }

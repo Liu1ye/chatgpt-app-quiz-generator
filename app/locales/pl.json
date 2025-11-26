@@ -12,6 +12,7 @@
     "accuracy": "Dokładność",
     "timeSpent": "Czas spędzony",
     "retake": "Powtórz quiz",
-    "hint": "Wskazówka"
+    "hint": "Wskazówka",
+    "save": "Zapisz quiz"
   }
 }

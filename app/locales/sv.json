@@ -12,6 +12,7 @@
     "accuracy": "Noggrannhet",
     "timeSpent": "Tid Använd",
     "retake": "Gör om Quiz",
-    "hint": "Ledtråd"
+    "hint": "Ledtråd",
+    "save": "Spara quiz"
   }
 }

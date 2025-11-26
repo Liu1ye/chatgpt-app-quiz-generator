@@ -12,6 +12,7 @@
     "accuracy": "Natančnost",
     "timeSpent": "Porabljen čas",
     "retake": "Ponovno opravi kviz",
-    "hint": "Namig"
+    "hint": "Namig",
+    "save": "Shrani kviz"
   }
 }

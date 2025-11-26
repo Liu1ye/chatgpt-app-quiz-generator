@@ -1,0 +1,166 @@
+{
+    "title": "泰勒公式测试题",
+    "description": "五道关于泰勒展开与应用的测试题。",
+    "questions": [
+        {
+            "id": "q1",
+            "question": "e^x 在 x=0 处的三阶泰勒展开式是哪一个？",
+            "hint": "写出 e^x 的幂级数并保留三阶项。",
+            "options": [
+                {
+                    "text": "1 + x + x^2/2 + x^3/6",
+                    "isCorrect": true,
+                    "explanation": "这是 e^x 在 0 处的标准三阶泰勒展开。",
+                    "selected": false
+                },
+                {
+                    "text": "1 + x + x^2 + x^3",
+                    "isCorrect": false,
+                    "explanation": "遗漏了二阶、三阶项的系数。",
+                    "selected": true
+                },
+                {
+                    "text": "1 + 2x + x^2/2 + x^3",
+                    "isCorrect": false,
+                    "explanation": "一次项系数错误。",
+                    "selected": false
+                },
+                {
+                    "text": "x + x^2/2 + x^3/6",
+                    "isCorrect": false,
+                    "explanation": "缺少常数项 1。",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": "q2",
+            "question": "ln(1+x) 在 x=0 处的展开首三项是什么？",
+            "hint": "使用 ln(1+x) 的常用展开式。",
+            "options": [
+                {
+                    "text": "x - x^2/2 + x^3/3",
+                    "isCorrect": true,
+                    "explanation": "这是 ln(1+x) 的前三项。",
+                    "selected": false
+                },
+                {
+                    "text": "1 + x - x^2",
+                    "isCorrect": false,
+                    "explanation": "ln(1+x) 在 0 处不包含常数 1。",
+                    "selected": false
+                },
+                {
+                    "text": "x + x^2 + x^3",
+                    "isCorrect": false,
+                    "explanation": "符号和系数均错误。",
+                    "selected": true
+                },
+                {
+                    "text": "-x + x^2 - x^3",
+                    "isCorrect": false,
+                    "explanation": "与正确展开符号相反。",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": "q3",
+            "question": "sin x 在 x=0 附近取到三阶项的近似式是什么？",
+            "hint": "sin x 的展开只含奇次项。",
+            "options": [
+                {
+                    "text": "x - x^3/6",
+                    "isCorrect": true,
+                    "explanation": "正确：sin x = x - x^3/6 + ...。",
+                    "selected": true
+                },
+                {
+                    "text": "x + x^2/2",
+                    "isCorrect": false,
+                    "explanation": "缺少三阶项且包含错误的二阶项。",
+                    "selected": false
+                },
+                {
+                    "text": "1 - x^2/2",
+                    "isCorrect": false,
+                    "explanation": "这是 cos x 的前两项。",
+                    "selected": false
+                },
+                {
+                    "text": "x^3 - x/6",
+                    "isCorrect": false,
+                    "explanation": "次序和系数均错误。",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": "q4",
+            "question": "泰勒公式中的拉格朗日余项 R_n(x) 的表达形式是哪一个？",
+            "hint": "注意余项包含 (n+1) 阶导数。",
+            "options": [
+                {
+                    "text": "R_n(x) = f^(n+1)(ξ)/(n+1)! * (x-a)^(n+1)",
+                    "isCorrect": true,
+                    "explanation": "拉格朗日型余项的标准表达式。",
+                    "selected": true
+                },
+                {
+                    "text": "R_n(x) = f^(n)(a)(x-a)^n",
+                    "isCorrect": false,
+                    "explanation": "缺少阶乘并且阶数错误。",
+                    "selected": false
+                },
+                {
+                    "text": "R_n(x) = f(x) - f(a)",
+                    "isCorrect": false,
+                    "explanation": "这是函数增量，不是余项。",
+                    "selected": false
+                },
+                {
+                    "text": "R_n(x) = 0",
+                    "isCorrect": false,
+                    "explanation": "一般情况下余项不为零。",
+                    "selected": false
+                }
+            ]
+        },
+        {
+            "id": "q5",
+            "question": "判断：若函数在 a 附近具有泰勒展开，则一定可以写成收敛的幂级数。",
+            "hint": "思考“泰勒展开存在”是否等于“函数可解析”。",
+            "options": [
+                {
+                    "text": "错误",
+                    "isCorrect": true,
+                    "explanation": "存在泰勒公式不等于泰勒级数必定收敛，如某些非解析函数。",
+                    "selected": false
+                },
+                {
+                    "text": "正确",
+                    "isCorrect": false,
+                    "explanation": "可展开并不保证是解析函数。",
+                    "selected": false
+                },
+                {
+                    "text": "无法判断",
+                    "isCorrect": false,
+                    "explanation": "数学上有明确反例，因此可判断为错误。",
+                    "selected": true
+                },
+                {
+                    "text": "需要更多条件",
+                    "isCorrect": false,
+                    "explanation": "题目问的是是否“一定”，所以应答为否。",
+                    "selected": false
+                }
+            ]
+        }
+    ],
+    "error": [
+        0,
+        1,
+        4
+    ]
+}

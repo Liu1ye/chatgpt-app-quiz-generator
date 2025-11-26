@@ -1,4 +1,5 @@
-import { Question, QuizData } from './types';
+import { CallToolResponse } from '@/app/hooks';
+import { Question, QuizData } from '../types';
 
 
 export class QuizManager {
@@ -9,13 +10,22 @@ export class QuizManager {
     private endTime: number | null;
     private info: any
 
-    constructor(quizData: QuizData) {
+    constructor(quizData: QuizData, isFromList: boolean) {
         this.questions = quizData.questions;
-        this.answers = new Array(quizData.questions.length).fill(null);
         this.currentQuestionIndex = 0;
         this.startTime = Date.now();
         this.endTime = null;
         this.info = quizData
+        this.answers = []
+
+        if(isFromList){
+            this.answers = quizData.questions.map((item, index) => {
+                const selectedIndex = item.options.findIndex(option => option.selected);
+                return selectedIndex !== -1 ? selectedIndex : null;
+            });
+        }else{
+            this.answers = new Array(quizData.questions.length).fill(null)
+        }
     }
 
     // 获取当前题目
@@ -163,23 +173,71 @@ export class QuizManager {
     }
 
     // 保存题目
-    async save(sendFollowUpMessage: (prompt:string) => Promise<void>): Promise<void> {
-        const error = this.answers.map((i, j) => {
-            if(i !== null){
-                return this.questions[j].options[i].isCorrect ? true : false
-            }
-            return null
-        })
+    async save(type: 'all' | 'incorrect'): Promise<CallToolResponse> {
+
+        let questions;
+        let error:number[] = []
+
+        if(type === 'all'){
+            questions = this.questions.map((item, index) => {
+                return {
+                    ...item,
+                    options: item.options.map((cItem, cIndex) => {
+                        if(cIndex === this.answers[index]){
+                            return {
+                                ...cItem,
+                                selected: true
+                            }
+                        }
+                        return {
+                            ...cItem,
+                            selected: false
+                        };
+                    })
+                }
+            })
+    
+            questions.forEach((q, qIdx) => {
+                const hasWrongAnswer = q.options.some(option => 
+                    option.selected === true && option.isCorrect === false
+                )
+                if (hasWrongAnswer) {
+                    error.push(qIdx)
+                }
+            })
+        }else{
+            questions = this.questions.map((item, index) => {
+                if(item.options[this.answers[index] as number].isCorrect) return null
+                return {
+                    ...item,
+                    options: item.options.map((cItem, cIndex) => {
+                        if(cIndex === this.answers[index]){
+                            return {
+                                ...cItem,
+                                selected: true
+                            }
+                        }
+                        return {
+                            ...cItem,
+                            selected: false
+                        };
+                    })
+                }
+            })
+
+            questions.forEach((_, qIdx) =>  error.push(qIdx))
+        }
 
         // 包装在 data 字段中，匹配后端 inputSchema 结构
         const payload = {
             data: {
                 ...this.info,
-                answer: this.answers,
+                questions,
                 error,
+                type,
             }
         }
 
-        sendFollowUpMessage(`Call the quiz-saver tool and pass some data to it, data:'${JSON.stringify(payload)}'`)
+        return window?.openai?.callTool('save-quiz', payload)
     }
 }

@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import QuizOption from '../QuizOption';
 import HintButton from '../HintButton';
 import MathText from '../MathText';
-import { Question } from '../types';
+import { Question } from '../../types';
 
 interface QuizQuestionProps {
     question: Question;
@@ -12,6 +12,8 @@ interface QuizQuestionProps {
     totalQuestions: number;
     selectedOption: number | null;
     showHint: boolean;
+    isFromList?: boolean;
+    onClickBackToList?: () => void
     onOptionClick: (index: number) => void;
     onToggleHint: () => void;
     onPrevious: () => void;
@@ -24,6 +26,8 @@ const QuizQuestion = ({
     totalQuestions,
     selectedOption,
     showHint,
+    isFromList,
+    onClickBackToList,
     onOptionClick,
     onToggleHint,
     onPrevious,
@@ -89,6 +93,9 @@ const QuizQuestion = ({
             className="quiz-question-container bg-bg-primary border-[0.5px] border-border-heavy border-solid rounded-[24px] w-full max-w-[800px] mx-auto"
         >
             <div className="quiz-question-inner flex flex-col items-center overflow-clip rounded-[inherit]">
+                {
+                    isFromList && <div onClick={onClickBackToList && onClickBackToList} className='w-full p-[18px_22px_0_22px] text-text-secondary cursor-pointer'>back</div>
+                }
                 {/* 标题 */}
                 <motion.div
                     initial={{ opacity: 0, y: -10 }}

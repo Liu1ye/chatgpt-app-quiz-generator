@@ -1,24 +1,32 @@
 'use client';
 
-import { useMemo, useState, useCallback } from 'react';
-import { useCallTool, useSendMessage, useWidgetProps } from '@/app/hooks';
+import { useMemo, useState, useCallback, FC } from 'react';
+import { useWidgetProps } from '@/app/hooks';
 import QuizQuestion from './QuizQuestion';
 import QuizComplete from './QuizComplete';
 import { QuizManager } from './QuizManager';
-import { QuizData } from './types';
+import { QuizData } from '../types';
 import { Skeleton } from './Skeleton';
 
-const Quiz = () => {
-  const widgetProps = useWidgetProps<{ language?: string; data?: QuizData }>();
-  const sendFollowUpMessage = useSendMessage()
-  const quizData = widgetProps?.data;
+type QuizProps = {
+  quizDataFromList?: QuizData
+  isFromList?: boolean
+  onClickBackToList?: () => void
+}
 
-  console.log(widgetProps, 'widgetProps')
+const Quiz:FC<QuizProps> = (props) => {
+
+  const { quizDataFromList, isFromList = false, onClickBackToList }  = props
+
+  const widgetProps = useWidgetProps<{ language?: string; data?: QuizData }>();
+  const quizData = quizDataFromList || widgetProps?.data;
 
   const quizManager = useMemo(() => {
     if (!quizData?.questions?.length) return null;
-    return new QuizManager(quizData);
+    return new QuizManager(quizData, isFromList);
   }, [quizData?.questions]);
+
+  console.log(quizData, 'quizData')
 
   const [showHint, setShowHint] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
@@ -67,8 +75,9 @@ const Quiz = () => {
     forceUpdate();
   }, [quizManager, forceUpdate]);
 
-  const handleSave = async () => {
-    await quizManager?.save(sendFollowUpMessage)
+  const handleSave = async (type: 'all' | 'incorrect') => {
+    const res = await quizManager?.save(type)
+    console.log(res, 'rrrrr')
   }
 
   // 加载状态
@@ -79,7 +88,7 @@ const Quiz = () => {
   }
 
   // 完成页面
-  if (isCompleted) {
+  if (isCompleted && !isFromList) {
     return (
       <QuizComplete
         score={quizManager.calculateScore()}
@@ -99,7 +108,9 @@ const Quiz = () => {
       currentQuestionIndex={quizManager.getCurrentQuestionIndex()}
       totalQuestions={quizManager.getTotalQuestions()}
       selectedOption={quizManager.getCurrentAnswer()}
+      onClickBackToList={onClickBackToList}
       showHint={showHint}
+      isFromList={isFromList}
       onOptionClick={handleOptionClick}
       onToggleHint={handleToggleHint}
       onPrevious={handlePrevious}

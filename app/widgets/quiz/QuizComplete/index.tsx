@@ -1,10 +1,12 @@
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
-import { QuizCompleteProps } from '../types';
+import { QuizCompleteProps } from '../../types';
+import { useState } from 'react';
 
 const QuizComplete = ({ score, totalQuestions, accuracy, elapsedTime, onRetake, onSave }: QuizCompleteProps) => {
     const { t } = useTranslation();
+    const [showSaveMenu, setShowSaveMenu] = useState(false);
     
     const formatTime = (ms: number) => {
         const totalSeconds = Math.floor(ms / 1000);
@@ -39,7 +41,7 @@ const QuizComplete = ({ score, totalQuestions, accuracy, elapsedTime, onRetake, 
                         }}
                         className="w-[48px] h-[48px] text-[48px] flex items-center justify-center"
                     >
-                        <Image src='/trophy.png' alt="Trophy" width={48} height={48} />
+                        <Image src='./trophy.png' alt="Trophy" width={48} height={48} />
                     </motion.div>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -136,16 +138,29 @@ const QuizComplete = ({ score, totalQuestions, accuracy, elapsedTime, onRetake, 
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 1.3, duration: 0.3 }}
-                        className="flex gap-[8px] items-center"
+                        className="flex flex-col gap-[8px] items-center relative"
                     >
+                        {/* Save Menu */}
+                        <AnimatePresence>
+                            {showSaveMenu && (
+                                <SaveMenu
+                                    onSelect={(type) => {
+                                        setShowSaveMenu(false);
+                                        onSave(type);
+                                    }}
+                                    onClose={() => setShowSaveMenu(false)}
+                                />
+                            )}
+                        </AnimatePresence>
+
                         <motion.button
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             className="bg-interactive-bg-primary-default w-[160px] py-[8px] rounded-full transition-colors"
-                            onClick={onSave}
+                            onClick={() => setShowSaveMenu(!showSaveMenu)}
                         >
                             <p className="font-medium text-interactive-label-primary-default text-[14px] leading-[20px] tracking-[-0.18px] whitespace-pre">
-                                {t('quiz.retake')}
+                                {t('quiz.save')}
                             </p>
                         </motion.button>
                     </motion.div>
@@ -176,3 +191,59 @@ const QuizComplete = ({ score, totalQuestions, accuracy, elapsedTime, onRetake, 
 
 export default QuizComplete;
 
+
+interface SaveMenuProps {
+    onSelect: (type: 'all' | 'incorrect') => void;
+    onClose: () => void;
+}
+
+const SaveMenu = ({ onSelect, onClose }: SaveMenuProps) => {
+    const options = [
+        {
+            key: 'all' as const,
+            text: 'Save all questions'
+        },
+        {
+            key: 'incorrect' as const,
+            text: 'Save only incorrect questions'
+        }
+    ]
+
+    return (
+        <>
+            {/* 遮罩层，点击关闭菜单 */}
+            <div
+                className='fixed inset-0 z-40'
+                onClick={onClose}
+            />
+
+            {/* 菜单 */}
+            <motion.div
+                initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                transition={{ duration: 0.2 }}
+                className='absolute bottom-full mb-[8px] bg-bg-primary shadow-lg rounded-[20px] p-[6px] z-50'
+            >
+                {
+                    options.map((item, index) => {
+                        return (
+                            <motion.div
+                                key={item.key}
+                                initial={{ opacity: 0, x: -10 }}
+                                animate={{ opacity: 1, x: 0 }}
+                                transition={{ delay: index * 0.05 }}
+                                className='w-[215px] border-[1px] border-solid border-border-default p-[10px_8px_10px_10px] rounded-[6px] cursor-pointer hover:bg-bg-secondary transition-colors'
+                                onClick={() => onSelect(item.key)}
+                            >
+                                <p className='font-medium text-[14px] leading-[20px] tracking-[-0.18px] text-text-primary'>
+                                    {item.text}
+                                </p>
+                            </motion.div>
+                        )
+                    })
+                }
+            </motion.div>
+        </>
+    )
+}

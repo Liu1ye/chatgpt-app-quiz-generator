@@ -2,6 +2,7 @@ export interface QuestionOption {
     text: string;
     isCorrect: boolean;
     explanation: string;
+    selected?: boolean;
 }
 
 export interface Question {
@@ -12,10 +13,13 @@ export interface Question {
 }
 
 export interface QuizData {
+    id?: string
     title: string;
     description: string;
     language?: string;
     questions: Question[];
+    error: number[]
+    createdAt?: string
 }
 
 export interface QuizCompleteProps {
@@ -24,5 +28,5 @@ export interface QuizCompleteProps {
     accuracy: number;
     elapsedTime: number;
     onRetake: () => void;
-    onSave: () => void;
+    onSave: (type: 'all' | 'incorrect') => void;
 }

@@ -12,6 +12,7 @@
     "accuracy": "準確度",
     "timeSpent": "花費時間",
     "retake": "重考測驗",
-    "hint": "提示"
+    "hint": "提示",
+    "save": "儲存測驗"
   }
 }

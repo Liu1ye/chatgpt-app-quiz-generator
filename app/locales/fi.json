@@ -12,6 +12,7 @@
     "accuracy": "Tarkkuus",
     "timeSpent": "Käytetty aika",
     "retake": "Uudelleen koe",
-    "hint": "Vihje"
+    "hint": "Vihje",
+    "save": "Tallenna kysely"
   }
 }

@@ -12,6 +12,7 @@
     "accuracy": "Nauwkeurigheid",
     "timeSpent": "Tijd Besteed",
     "retake": "Quiz Herhalen",
-    "hint": "Hint"
+    "hint": "Hint",
+    "save": "Quiz opslaan"
   }
 }

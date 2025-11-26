@@ -12,6 +12,7 @@
     "accuracy": "Tikslumas",
     "timeSpent": "Praleistas laikas",
     "retake": "Pakartoti testą",
-    "hint": "Užuomina"
+    "hint": "Užuomina",
+    "save": "Išsaugoti testą"
   }
 }

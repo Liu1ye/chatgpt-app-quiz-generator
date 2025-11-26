@@ -12,6 +12,7 @@
     "accuracy": "Přesnost",
     "timeSpent": "Strávený čas",
     "retake": "Opakovat kvíz",
-    "hint": "Nápověda"
+    "hint": "Nápověda",
+    "save": "Uložit kvíz"
   }
 }

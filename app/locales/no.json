@@ -12,6 +12,7 @@
     "accuracy": "Nøyaktighet",
     "timeSpent": "Tid brukt",
     "retake": "Ta quizen på nytt",
-    "hint": "Hint"
+    "hint": "Hint",
+    "save": "Lagre quiz"
   }
 }

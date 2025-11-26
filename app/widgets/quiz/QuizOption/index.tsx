@@ -1,7 +1,8 @@
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import MathText from '../MathText';
-import { QuestionOption } from '../types';
+import { QuestionOption } from '../../types';
+import { ArrowRightLgIcon, ArrowLeftLgIcon, CheckMdIcon, CloseMdIcon } from '@/app/assets/icons'
 
 interface QuizOptionProps {
     option: QuestionOption;
@@ -112,9 +113,9 @@ const QuizOption = ({
                                 transition={{ type: "spring", stiffness: 200, damping: 15 }}
                             >
                                 {isCorrect ? (
-                                    <Image src='/check-md.svg' alt="CheckMd" width={24} height={24} />
+                                    <CheckMdIcon size={24} />
                                 ) : (
-                                    <Image src='/close-md.svg' alt="CloseMd" width={24} height={24} />
+                                    <CloseMdIcon size={24} />
                                 )}
                             </motion.div>
                         ) : (

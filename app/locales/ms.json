@@ -12,6 +12,7 @@
     "accuracy": "Ketepatan",
     "timeSpent": "Masa Dihabiskan",
     "retake": "Ambil Semula Kuiz",
-    "hint": "Petunjuk"
+    "hint": "Petunjuk",
+    "save": "Simpan Kuiz"
   }
 }

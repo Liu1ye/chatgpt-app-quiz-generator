@@ -12,6 +12,7 @@
     "accuracy": "Nøjagtighed",
     "timeSpent": "Brugt Tid",
     "retake": "Tag Quiz igen",
-    "hint": "Hint"
+    "hint": "Hint",
+    "save": "Gem quiz"
   }
 }

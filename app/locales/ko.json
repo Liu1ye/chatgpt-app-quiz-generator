@@ -12,6 +12,7 @@
     "accuracy": "정확도",
     "timeSpent": "소요 시간",
     "retake": "퀴즈 다시 풀기",
-    "hint": "힌트"
+    "hint": "힌트",
+    "save": "퀴즈 저장"
   }
 }

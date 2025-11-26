@@ -9,5 +9,5 @@
 
 export const baseURL =
   process.env.NODE_ENV === "development"
-    ? "https://unasphalted-psychosomatic-andy.ngrok-free.dev"
+    ? "http://localhost:8080"
     : "https://quiz.apps.wisebox.ai";
