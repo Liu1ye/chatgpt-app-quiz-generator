@@ -6,8 +6,7 @@
 //         ? process.env.VERCEL_PROJECT_PRODUCTION_URL
 //         : process.env.VERCEL_BRANCH_URL || process.env.VERCEL_URL);
 
-
 export const baseURL =
-  process.env.NODE_ENV === "development"
-    ? "http://localhost:8080"
-    : "https://quiz.apps.wisebox.ai";
+  process.env.NODE_ENV === 'development'
+    ? 'http://localhost:8080'
+    : 'https://quiz.apps.wisebox.ai'

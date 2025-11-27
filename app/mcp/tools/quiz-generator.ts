@@ -1,6 +1,6 @@
-import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
-import { z } from "zod";
-import { ContentWidget, widgetMeta } from "./types";
+import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
+import { z } from 'zod'
+import { ContentWidget, widgetMeta } from './types'
 
 /**
  * 注册 quiz-generator tool
@@ -8,47 +8,47 @@ import { ContentWidget, widgetMeta } from "./types";
  */
 export async function registerQuizGeneratorTool(
   server: McpServer,
-  html: string,
+  html: string
 ) {
   const quizGeneratorWidget: ContentWidget = {
-    id: "quiz-generator",
-    title: "Quiz Generator",
-    templateUri: "ui://widget/quiz-generator-template.html",
-    invoking: "Loading quiz...",
-    invoked: "Quiz loaded",
+    id: 'quiz-generator',
+    title: 'Quiz Generator',
+    templateUri: 'ui://widget/quiz-generator-template.html',
+    invoking: 'Loading quiz...',
+    invoked: 'Quiz loaded',
     html: html,
     description: "Generates a quiz based on the user's input",
-    widgetDomain: "https://sider.ai",
-  };
+    widgetDomain: 'https://sider.ai',
+  }
 
   // 注册 widget 资源
   server.registerResource(
-    "quiz-generator-widget",
+    'quiz-generator-widget',
     quizGeneratorWidget.templateUri,
     {
       title: quizGeneratorWidget.title,
       description: quizGeneratorWidget.description,
-      mimeType: "text/html+skybridge",
+      mimeType: 'text/html+skybridge',
       _meta: {
-        "openai/widgetDescription": quizGeneratorWidget.description,
-        "openai/widgetPrefersBorder": true,
+        'openai/widgetDescription': quizGeneratorWidget.description,
+        'openai/widgetPrefersBorder': true,
       },
     },
     async (uri) => ({
       contents: [
         {
           uri: uri.href,
-          mimeType: "text/html+skybridge",
+          mimeType: 'text/html+skybridge',
           text: `<html>${quizGeneratorWidget.html}</html>`,
           _meta: {
-            "openai/widgetDescription": quizGeneratorWidget.description,
-            "openai/widgetPrefersBorder": true,
-            "openai/widgetDomain": quizGeneratorWidget.widgetDomain,
+            'openai/widgetDescription': quizGeneratorWidget.description,
+            'openai/widgetPrefersBorder': true,
+            'openai/widgetDomain': quizGeneratorWidget.widgetDomain,
           },
         },
       ],
     })
-  );
+  )
 
   // 注册 quiz-generator tool
   server.registerTool(
@@ -68,25 +68,59 @@ KaTeX syntax examples:
 - Square root: $\\sqrt{x}$
 - Greek letters: $\\alpha$, $\\beta$, $\\pi$`,
       inputSchema: {
-        language: z.string().default("en").describe("Language code (ISO 639-1, e.g., 'en', 'zh-CN', 'ja'). Default: en"),
+        language: z
+          .string()
+          .default('en')
+          .describe(
+            "Language code (ISO 639-1, e.g., 'en', 'zh-CN', 'ja'). Default: en"
+          ),
         data: z.object({
-          topic: z.string().describe("The topic for the quiz"),
-          title: z.string().describe("Quiz title (e.g., 'Python Programming Quiz')"),
-          description: z.string().describe("Brief description of the quiz"),
-          questions: z.array(
-            z.object({
-              id: z.string().describe("Unique question ID (e.g., 'q1', 'q2')"),
-              question: z.string().describe("The question text. For mathematical formulas, use KaTeX syntax: $...$ for inline formulas, $$...$$ for display formulas"),
-              hint: z.string().describe("Helpful hint for this question. For mathematical formulas, use KaTeX syntax: $...$ for inline formulas, $$...$$ for display formulas"),
-              options: z.array(
-                z.object({
-                  text: z.string().describe("Option text. For mathematical formulas, use KaTeX syntax: inline formulas with $...$ (e.g., '$x^2 + y^2 = z^2$') and display formulas with $$...$$ (e.g., '$$\\frac{a}{b}$$')"),
-                  isCorrect: z.boolean().describe("Whether this option is the correct answer"),
-                  explanation: z.string().describe("Explanation for this option (why it's correct or why it's wrong). For mathematical formulas, use KaTeX syntax: $...$ for inline formulas, $$...$$ for display formulas"),
-                })
-              ).length(4).describe("Array of answer options (typically 4). Each question must have exactly 4 options, and only ONE option should have isCorrect: true"),
-            })
-          ).describe("Array of quiz questions")
+          topic: z.string().describe('The topic for the quiz'),
+          title: z
+            .string()
+            .describe("Quiz title (e.g., 'Python Programming Quiz')"),
+          description: z.string().describe('Brief description of the quiz'),
+          questions: z
+            .array(
+              z.object({
+                id: z
+                  .string()
+                  .describe("Unique question ID (e.g., 'q1', 'q2')"),
+                question: z
+                  .string()
+                  .describe(
+                    'The question text. For mathematical formulas, use KaTeX syntax: $...$ for inline formulas, $$...$$ for display formulas'
+                  ),
+                hint: z
+                  .string()
+                  .describe(
+                    'Helpful hint for this question. For mathematical formulas, use KaTeX syntax: $...$ for inline formulas, $$...$$ for display formulas'
+                  ),
+                options: z
+                  .array(
+                    z.object({
+                      text: z
+                        .string()
+                        .describe(
+                          "Option text. For mathematical formulas, use KaTeX syntax: inline formulas with $...$ (e.g., '$x^2 + y^2 = z^2$') and display formulas with $$...$$ (e.g., '$$\\frac{a}{b}$$')"
+                        ),
+                      isCorrect: z
+                        .boolean()
+                        .describe('Whether this option is the correct answer'),
+                      explanation: z
+                        .string()
+                        .describe(
+                          "Explanation for this option (why it's correct or why it's wrong). For mathematical formulas, use KaTeX syntax: $...$ for inline formulas, $$...$$ for display formulas"
+                        ),
+                    })
+                  )
+                  .length(4)
+                  .describe(
+                    'Array of answer options (typically 4). Each question must have exactly 4 options, and only ONE option should have isCorrect: true'
+                  ),
+              })
+            )
+            .describe('Array of quiz questions'),
         }),
       },
       // The widget consumes only these fields as props via useWidgetProps
@@ -109,12 +143,12 @@ KaTeX syntax examples:
                       explanation: z.string(),
                     })
                   )
-                  .length(4, "Each question must have exactly 4 options"),
+                  .length(4, 'Each question must have exactly 4 options'),
               })
               .refine(
                 (q) => q.options.filter((o) => o.isCorrect).length === 1,
                 {
-                  message: "Each question must have exactly one correct option",
+                  message: 'Each question must have exactly one correct option',
                 }
               )
           ),
@@ -123,7 +157,7 @@ KaTeX syntax examples:
       _meta: widgetMeta(quizGeneratorWidget),
     },
     async ({ language, data }) => {
-      const { title, description, questions } = data;
+      const { title, description, questions } = data
       return {
         content: [],
         structuredContent: {
@@ -135,7 +169,7 @@ KaTeX syntax examples:
             questions,
           },
         },
-      };
+      }
     }
-  );
+  )
 }

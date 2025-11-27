@@ -1,7 +1,7 @@
-"use client";
+'use client'
 
-import WidgetSelector from "./widgets";
+import WidgetSelector from './widgets'
 
 export default function Home() {
-  return <WidgetSelector />;
+  return <WidgetSelector />
 }

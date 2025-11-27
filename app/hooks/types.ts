@@ -6,89 +6,89 @@ export type OpenAIGlobals<
   ToolInput = UnknownObject,
   ToolOutput = UnknownObject,
   ToolResponseMetadata = UnknownObject,
-  WidgetState = UnknownObject
+  WidgetState = UnknownObject,
 > = {
   // visuals
-  theme: Theme;
+  theme: Theme
 
-  userAgent: UserAgent;
-  locale: string;
+  userAgent: UserAgent
+  locale: string
 
   // layout
-  maxHeight: number;
-  displayMode: DisplayMode;
-  safeArea: SafeArea;
+  maxHeight: number
+  displayMode: DisplayMode
+  safeArea: SafeArea
 
   // state
-  toolInput: ToolInput;
-  toolOutput: ToolOutput | null;
-  toolResponseMetadata: ToolResponseMetadata | null;
-  widgetState: WidgetState | null;
-  setWidgetState: (state: WidgetState) => Promise<void>;
-};
+  toolInput: ToolInput
+  toolOutput: ToolOutput | null
+  toolResponseMetadata: ToolResponseMetadata | null
+  widgetState: WidgetState | null
+  setWidgetState: (state: WidgetState) => Promise<void>
+}
 
 type API = {
-  callTool: CallTool;
-  sendFollowUpMessage: (args: { prompt: string }) => Promise<void>;
-  openExternal(payload: { href: string }): void;
+  callTool: CallTool
+  sendFollowUpMessage: (args: { prompt: string }) => Promise<void>
+  openExternal(payload: { href: string }): void
 
   // Layout controls
-  requestDisplayMode: RequestDisplayMode;
-};
+  requestDisplayMode: RequestDisplayMode
+}
 
-export type UnknownObject = Record<string, unknown>;
+export type UnknownObject = Record<string, unknown>
 
-export type Theme = "light" | "dark";
+export type Theme = 'light' | 'dark'
 
 export type SafeAreaInsets = {
-  top: number;
-  bottom: number;
-  left: number;
-  right: number;
-};
+  top: number
+  bottom: number
+  left: number
+  right: number
+}
 
 export type SafeArea = {
-  insets: SafeAreaInsets;
-};
+  insets: SafeAreaInsets
+}
 
-export type DeviceType = "mobile" | "tablet" | "desktop" | "unknown";
+export type DeviceType = 'mobile' | 'tablet' | 'desktop' | 'unknown'
 
 export type UserAgent = {
-  device: { type: DeviceType };
+  device: { type: DeviceType }
   capabilities: {
-    hover: boolean;
-    touch: boolean;
-  };
-};
+    hover: boolean
+    touch: boolean
+  }
+}
 
 /** Display mode */
-export type DisplayMode = "pip" | "inline" | "fullscreen";
+export type DisplayMode = 'pip' | 'inline' | 'fullscreen'
 export type RequestDisplayMode = (args: { mode: DisplayMode }) => Promise<{
   /**
    * The granted display mode. The host may reject the request.
    * For mobile, PiP is always coerced to fullscreen.
    */
-  mode: DisplayMode;
-}>;
+  mode: DisplayMode
+}>
 
 export type CallToolResponse = {
-  result: string;
-};
+  result: string
+}
 
 /** Calling APIs */
 export type CallTool = (
   name: string,
   args: Record<string, unknown>
-) => Promise<CallToolResponse>;
+) => Promise<CallToolResponse>
 
 /** Extra events */
-export const SET_GLOBALS_EVENT_TYPE = "openai:set_globals";
+export const SET_GLOBALS_EVENT_TYPE = 'openai:set_globals'
 const CustomEventBase: typeof CustomEvent =
-  typeof CustomEvent !== 'undefined' ? CustomEvent : (class {} as any);
+  typeof CustomEvent !== 'undefined' ? CustomEvent : (class {} as any)
 export class SetGlobalsEvent extends CustomEventBase<{
-  globals: Partial<OpenAIGlobals>;
+  globals: Partial<OpenAIGlobals>
 }> {
-  readonly type = SET_GLOBALS_EVENT_TYPE;
+  readonly type = SET_GLOBALS_EVENT_TYPE
 }
 
 /**
@@ -96,11 +96,11 @@ export class SetGlobalsEvent extends CustomEventBase<{
  */
 declare global {
   interface Window {
-    openai: API & OpenAIGlobals;
-    innerBaseUrl: string;
+    openai: API & OpenAIGlobals
+    innerBaseUrl: string
   }
 
   interface WindowEventMap {
-    [SET_GLOBALS_EVENT_TYPE]: SetGlobalsEvent;
+    [SET_GLOBALS_EVENT_TYPE]: SetGlobalsEvent
   }
 }

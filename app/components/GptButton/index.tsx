@@ -1,28 +1,28 @@
-import { cn } from '@/app/lib/cn';
-import React, { useEffect, useMemo, useState } from 'react';
-import type { ButtonProps } from './types';
+import { cn } from '@/app/lib/cn'
+import React, { useEffect, useMemo, useState } from 'react'
+import type { ButtonProps } from './types'
 
-import './button.css';
-import Image from 'next/image';
-import { LoadingIcon } from '@/app/assets/icons';
+import './button.css'
+import Image from 'next/image'
+import { LoadingIcon } from '@/app/assets/icons'
 
 export type {
   ButtonProps,
   ButtonSize,
   ButtonVariant,
   IconPosition,
-} from './types';
+} from './types'
 
-const prefixCls = 'gpt-btn';
+const prefixCls = 'gpt-btn'
 
 const normalizeLoading = (loading: ButtonProps['loading']) => {
   if (typeof loading === 'object' && loading) {
-    let delay = loading?.delay;
-    delay = !Number.isNaN(delay) && typeof delay === 'number' ? delay : 0;
-    return { loading: delay <= 0, delay, icon: loading.icon };
+    let delay = loading?.delay
+    delay = !Number.isNaN(delay) && typeof delay === 'number' ? delay : 0
+    return { loading: delay <= 0, delay, icon: loading.icon }
   }
-  return { loading: !!loading, delay: 0, icon: undefined };
-};
+  return { loading: !!loading, delay: 0, icon: undefined }
+}
 
 const GPTButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (props, ref) => {
@@ -40,35 +40,35 @@ const GPTButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
       block = false,
       style,
       ...restProps
-    } = props;
+    } = props
 
     // ====================== 处理 loading 状态 ======================
-    const loadingOrDelay = useMemo(() => normalizeLoading(loading), [loading]);
-    const [innerLoading, setLoading] = useState(loadingOrDelay.loading);
+    const loadingOrDelay = useMemo(() => normalizeLoading(loading), [loading])
+    const [innerLoading, setLoading] = useState(loadingOrDelay.loading)
 
     useEffect(() => {
-      let delayTimer: NodeJS.Timeout | null = null;
+      let delayTimer: NodeJS.Timeout | null = null
       if (loadingOrDelay.delay > 0) {
         delayTimer = setTimeout(() => {
-          delayTimer = null;
-          setLoading(true);
-        }, loadingOrDelay.delay);
+          delayTimer = null
+          setLoading(true)
+        }, loadingOrDelay.delay)
       } else {
-        setLoading(loadingOrDelay.loading);
+        setLoading(loadingOrDelay.loading)
       }
       return function cleanupTimer() {
         if (delayTimer) {
-          clearTimeout(delayTimer);
-          delayTimer = null;
+          clearTimeout(delayTimer)
+          delayTimer = null
         }
-      };
-    }, [loadingOrDelay]);
+      }
+    }, [loadingOrDelay])
 
-    const isDisabled = disabled || innerLoading;
+    const isDisabled = disabled || innerLoading
 
     // ====================== 处理图标 ======================
-    const iconClasses = cn(`${prefixCls}-icon`, classNames?.icon);
-    const iconStyle = styles?.icon;
+    const iconClasses = cn(`${prefixCls}-icon`, classNames?.icon)
+    const iconStyle = styles?.icon
 
     const iconNode = useMemo(() => {
       if (innerLoading) {
@@ -78,7 +78,7 @@ const GPTButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
               <LoadingIcon className="shrink-0 animate-spin" />
             )}
           </span>
-        );
+        )
       }
 
       if (icon) {
@@ -86,10 +86,10 @@ const GPTButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
           <span className={iconClasses} style={iconStyle}>
             {icon}
           </span>
-        );
+        )
       }
-      return null;
-    }, [innerLoading, icon, iconClasses, iconStyle, loadingOrDelay.icon]);
+      return null
+    }, [innerLoading, icon, iconClasses, iconStyle, loadingOrDelay.icon])
 
     // ====================== 处理按钮样式 ======================
     const buttonClasses = cn(
@@ -103,8 +103,8 @@ const GPTButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
         [`${prefixCls}-icon-${iconPosition}`]:
           iconPosition !== 'left' && iconPosition,
       },
-      className,
-    );
+      className
+    )
 
     return (
       <button
@@ -118,10 +118,10 @@ const GPTButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
         {iconNode}
         {children}
       </button>
-    );
-  },
-);
+    )
+  }
+)
 
-GPTButton.displayName = 'GPTButton';
+GPTButton.displayName = 'GPTButton'
 
-export default GPTButton;
+export default GPTButton

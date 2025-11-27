@@ -1,17 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next'
 import '@/app/styles/globals.css'
-import { baseURL } from "@/baseUrl";
-import InitialComp from "./components/InitialComp";
+import { baseURL } from '@/baseUrl'
+import InitialComp from './components/InitialComp'
 
 export const metadata: Metadata = {
-  title: "Quiz Generator",
-  description: "Quiz Generator - Sider.ai",
-};
+  title: 'Quiz Generator',
+  description: 'Quiz Generator - Sider.ai',
+}
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
@@ -19,12 +19,10 @@ export default function RootLayout({
         <NextChatSDKBootstrap baseUrl={baseURL} />
       </head>
       <body>
-        <InitialComp>
-          {children}
-        </InitialComp>
+        <InitialComp>{children}</InitialComp>
       </body>
     </html>
-  );
+  )
 }
 
 function NextChatSDKBootstrap({ baseUrl }: { baseUrl: string }) {
@@ -34,119 +32,119 @@ function NextChatSDKBootstrap({ baseUrl }: { baseUrl: string }) {
       <script>{`window.innerBaseUrl = ${JSON.stringify(baseUrl)}`}</script>
       <script>{`window.__isChatGptApp = typeof window.openai !== "undefined";`}</script>
       <script>
-        {"(" +
+        {'(' +
           (() => {
-            const baseUrl = window.innerBaseUrl;
-            const htmlElement = document.documentElement;
+            const baseUrl = window.innerBaseUrl
+            const htmlElement = document.documentElement
             const observer = new MutationObserver((mutations) => {
               mutations.forEach((mutation) => {
                 if (
-                  mutation.type === "attributes" &&
+                  mutation.type === 'attributes' &&
                   mutation.target === htmlElement
                 ) {
-                  const attrName = mutation.attributeName;
-                  if (attrName && attrName !== "suppresshydrationwarning") {
-                    htmlElement.removeAttribute(attrName);
+                  const attrName = mutation.attributeName
+                  if (attrName && attrName !== 'suppresshydrationwarning') {
+                    htmlElement.removeAttribute(attrName)
                   }
                 }
-              });
-            });
+              })
+            })
             observer.observe(htmlElement, {
               attributes: true,
               attributeOldValue: true,
-            });
+            })
 
-            const originalReplaceState = history.replaceState;
+            const originalReplaceState = history.replaceState
             history.replaceState = (s, unused, url) => {
-              const u = new URL(url ?? "", window.location.href);
-              const href = u.pathname + u.search + u.hash;
-              originalReplaceState.call(history, unused, href);
-            };
+              const u = new URL(url ?? '', window.location.href)
+              const href = u.pathname + u.search + u.hash
+              originalReplaceState.call(history, unused, href)
+            }
 
-            const originalPushState = history.pushState;
+            const originalPushState = history.pushState
             history.pushState = (s, unused, url) => {
-              const u = new URL(url ?? "", window.location.href);
-              const href = u.pathname + u.search + u.hash;
-              originalPushState.call(history, unused, href);
-            };
+              const u = new URL(url ?? '', window.location.href)
+              const href = u.pathname + u.search + u.hash
+              originalPushState.call(history, unused, href)
+            }
 
-            const appOrigin = new URL(baseUrl).origin;
-            const isInIframe = window.self !== window.top;
+            const appOrigin = new URL(baseUrl).origin
+            const isInIframe = window.self !== window.top
 
             window.addEventListener(
-              "click",
+              'click',
               (e) => {
-                const a = (e?.target as HTMLElement)?.closest("a");
-                if (!a || !a.href) return;
-                const url = new URL(a.href, window.location.href);
+                const a = (e?.target as HTMLElement)?.closest('a')
+                if (!a || !a.href) return
+                const url = new URL(a.href, window.location.href)
                 if (
                   url.origin !== window.location.origin &&
                   url.origin != appOrigin
                 ) {
                   try {
                     if (window.openai) {
-                      window.openai?.openExternal({ href: a.href });
-                      e.preventDefault();
+                      window.openai?.openExternal({ href: a.href })
+                      e.preventDefault()
                     }
                   } catch {
                     console.warn(
-                      "openExternal failed, likely not in OpenAI client"
-                    );
+                      'openExternal failed, likely not in OpenAI client'
+                    )
                   }
                 }
               },
               true
-            );
+            )
 
             if (isInIframe && window.location.origin !== appOrigin) {
-              const originalFetch = window.fetch;
+              const originalFetch = window.fetch
 
               window.fetch = (input: URL | RequestInfo, init?: RequestInit) => {
-                let url: URL;
-                if (typeof input === "string" || input instanceof URL) {
-                  url = new URL(input, window.location.href);
+                let url: URL
+                if (typeof input === 'string' || input instanceof URL) {
+                  url = new URL(input, window.location.href)
                 } else {
-                  url = new URL(input.url, window.location.href);
+                  url = new URL(input.url, window.location.href)
                 }
 
                 if (url.origin === appOrigin) {
-                  if (typeof input === "string" || input instanceof URL) {
-                    input = url.toString();
+                  if (typeof input === 'string' || input instanceof URL) {
+                    input = url.toString()
                   } else {
-                    input = new Request(url.toString(), input);
+                    input = new Request(url.toString(), input)
                   }
 
                   return originalFetch.call(window, input, {
                     ...init,
-                    mode: "cors",
-                  });
+                    mode: 'cors',
+                  })
                 }
 
                 if (url.origin === window.location.origin) {
-                  const newUrl = new URL(baseUrl);
-                  newUrl.pathname = url.pathname;
-                  newUrl.search = url.search;
-                  newUrl.hash = url.hash;
-                  url = newUrl;
+                  const newUrl = new URL(baseUrl)
+                  newUrl.pathname = url.pathname
+                  newUrl.search = url.search
+                  newUrl.hash = url.hash
+                  url = newUrl
 
-                  if (typeof input === "string" || input instanceof URL) {
-                    input = url.toString();
+                  if (typeof input === 'string' || input instanceof URL) {
+                    input = url.toString()
                   } else {
-                    input = new Request(url.toString(), input);
+                    input = new Request(url.toString(), input)
                   }
 
                   return originalFetch.call(window, input, {
                     ...init,
-                    mode: "cors",
-                  });
+                    mode: 'cors',
+                  })
                 }
 
-                return originalFetch.call(window, input, init);
-              };
+                return originalFetch.call(window, input, init)
+              }
             }
           }).toString() +
-          ")()"}
+          ')()'}
       </script>
     </>
-  );
+  )
 }
