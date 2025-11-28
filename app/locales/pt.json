@@ -17,6 +17,8 @@
     "my-quiz": "Meus Questionários",
     "no-file": "Nenhum arquivo ainda",
     "view": "Ver",
-    "back": "voltar"
+    "back": "voltar",
+    "save-success": "Salvo com sucesso",
+    "save-fail": "Falha ao salvar"
   }
 }

@@ -35,8 +35,8 @@ export const ToastProvider: React.FC<{ children: React.ReactNode }> = ({
   const showToast = useCallback(
     (
       message: string,
-      type: ToastType = 'info',
-      duration: number = 3000,
+      type: ToastType = 'success',
+      duration: number = 1500,
       action?: { label: string; onClick: () => void }
     ) => {
       const id = Date.now().toString()

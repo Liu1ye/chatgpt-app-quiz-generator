@@ -1,13 +1,14 @@
 'use client'
 
 import { useMemo, useState, useCallback, FC } from 'react'
-import { useWidgetProps } from '@/app/hooks'
+import { useWidgetProps, useWidgetState } from '@/app/hooks'
 import QuizQuestion from './QuizQuestion'
 import QuizComplete from './QuizComplete'
 import { QuizManager } from './QuizManager'
 import { QuizData } from '../types'
 import { Skeleton } from '@/app/components/Skeleton'
 import { useToast } from '@/app/context/toastContext'
+import { useTranslation } from 'react-i18next'
 
 type QuizProps = {
   quizDataFromList?: QuizData
@@ -22,6 +23,10 @@ const Quiz: FC<QuizProps> = (props) => {
   const quizData = quizDataFromList || widgetProps?.data
   const { showToast } = useToast()
   const [saveLoading, setSaveLoading] = useState<boolean>(false)
+  const [widgetState, setWidgetState] = useWidgetState({
+    isSaved: false,
+  })
+  const { t } = useTranslation()
 
   const quizManager = useMemo(() => {
     if (!quizData?.questions?.length) return null
@@ -79,12 +84,21 @@ const Quiz: FC<QuizProps> = (props) => {
   }, [quizManager, forceUpdate])
 
   const handleSave = async (type: 'all' | 'incorrect') => {
-    setSaveLoading(true)
+    if (widgetState.isSaved) {
+      showToast(t('quiz.save-success'), 'success')
+      return
+    }
     try {
+      setSaveLoading(true)
       const res = (await quizManager?.save(type)) as any
       if (res?.structuredContent?.response?.code === 0) {
-        showToast('Saved successfully', 'success', 2000)
+        setWidgetState({ isSaved: true })
+        showToast(t('quiz.save-success'), 'success')
+      } else {
+        showToast(t('quiz.save-fail'), 'error')
       }
+    } catch {
+      showToast(t('quiz.save-fail'), 'error')
     } finally {
       setSaveLoading(false)
     }

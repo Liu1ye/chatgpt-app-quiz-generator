@@ -17,6 +17,8 @@
     "my-quiz": "Kuis Saya",
     "no-file": "Belum ada file",
     "view": "Lihat",
-    "back": "kembali"
+    "back": "kembali",
+    "save-success": "Berhasil disimpan",
+    "save-fail": "Gagal menyimpan"
   }
 }

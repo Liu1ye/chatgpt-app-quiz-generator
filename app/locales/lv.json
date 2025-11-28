@@ -17,6 +17,8 @@
     "my-quiz": "Mani testi",
     "no-file": "Vēl nav failu",
     "view": "Skatīt",
-    "back": "atpakaļ"
+    "back": "atpakaļ",
+    "save-success": "Veiksmīgi saglabāts",
+    "save-fail": "Saglabāšana neizdevās"
   }
 }

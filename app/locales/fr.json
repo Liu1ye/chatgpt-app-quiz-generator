@@ -17,6 +17,8 @@
     "my-quiz": "Mes quiz",
     "no-file": "Aucun fichier pour l'instant",
     "view": "Voir",
-    "back": "retour"
+    "back": "retour",
+    "save-success": "Enregistré avec succès",
+    "save-fail": "Échec de l'enregistrement"
   }
 }

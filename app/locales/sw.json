@@ -17,6 +17,8 @@
     "my-quiz": "Maswali Yangu",
     "no-file": "Hakuna faili bado",
     "view": "Tazama",
-    "back": "nyuma"
+    "back": "nyuma",
+    "save-success": "Imehifadhiwa kwa mafanikio",
+    "save-fail": "Kuhifadhi kumeshindikana"
   }
 }

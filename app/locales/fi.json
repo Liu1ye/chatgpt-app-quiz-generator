@@ -17,6 +17,8 @@
     "my-quiz": "Kysymykseni",
     "no-file": "Ei tiedostoja vielä",
     "view": "Näytä",
-    "back": "takaisin"
+    "back": "takaisin",
+    "save-success": "Tallennettu onnistuneesti",
+    "save-fail": "Tallennus epäonnistui"
   }
 }

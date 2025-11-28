@@ -17,6 +17,8 @@
     "my-quiz": "Mijn Quizzen",
     "no-file": "Nog geen bestanden",
     "view": "Bekijk",
-    "back": "terug"
+    "back": "terug",
+    "save-success": "Succesvol opgeslagen",
+    "save-fail": "Opslaan mislukt"
   }
 }

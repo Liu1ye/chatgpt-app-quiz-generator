@@ -17,6 +17,8 @@
     "my-quiz": "Ang Aking Mga Pagsusulit",
     "no-file": "Walang mga file pa",
     "view": "Tumingin",
-    "back": "bumalik"
+    "back": "bumalik",
+    "save-success": "Nai-save nang matagumpay",
+    "save-fail": "Nabigong i-save"
   }
 }

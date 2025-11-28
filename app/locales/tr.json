@@ -17,6 +17,8 @@
     "my-quiz": "Quizlerim",
     "no-file": "Henüz dosya yok",
     "view": "Görüntüle",
-    "back": "geri"
+    "back": "geri",
+    "save-success": "Başarıyla kaydedildi",
+    "save-fail": "Kaydetme işlemi başarısız oldu"
   }
 }

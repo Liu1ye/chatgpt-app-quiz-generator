@@ -17,6 +17,8 @@
     "my-quiz": "Mine quizzer",
     "no-file": "Ingen filer endnu",
     "view": "Vis",
-    "back": "tilbage"
+    "back": "tilbage",
+    "save-success": "Gemmes med succes",
+    "save-fail": "Gemmen fejlede"
   }
 }

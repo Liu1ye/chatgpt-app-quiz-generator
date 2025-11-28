@@ -17,6 +17,8 @@
     "my-quiz": "Mano testai",
     "no-file": "Dar nėra failų",
     "view": "Peržiūrėti",
-    "back": "atgal"
+    "back": "atgal",
+    "save-success": "Sėkmingai išsaugota",
+    "save-fail": "Išsaugojimas nepavyko"
   }
 }

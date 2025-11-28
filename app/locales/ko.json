@@ -17,6 +17,8 @@
     "my-quiz": "내 퀴즈",
     "no-file": "아직 파일이 없습니다",
     "view": "보기",
-    "back": "뒤로"
+    "back": "뒤로",
+    "save-success": "저장되었습니다",
+    "save-fail": "저장에 실패했습니다"
   }
 }

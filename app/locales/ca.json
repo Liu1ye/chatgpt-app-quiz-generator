@@ -17,6 +17,8 @@
     "my-quiz": "Els meus qüestionaris",
     "no-file": "Encara no hi ha fitxers",
     "view": "Veure",
-    "back": "enrere"
+    "back": "enrere",
+    "save-success": "Desat amb èxit",
+    "save-fail": "Error en desar"
   }
 }

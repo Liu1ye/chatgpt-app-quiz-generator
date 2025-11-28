@@ -17,6 +17,8 @@
     "my-quiz": "Minu viktoriinid",
     "no-file": "Faile pole veel",
     "view": "Vaata",
-    "back": "tagasi"
+    "back": "tagasi",
+    "save-success": "Salvestamine õnnestus",
+    "save-fail": "Salvestamine ebaõnnestus"
   }
 }

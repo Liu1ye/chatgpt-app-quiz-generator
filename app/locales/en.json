@@ -17,6 +17,8 @@
     "my-quiz": "My Quizzes",
     "no-file": "No files yet",
     "view": "View",
-    "back": "back"
+    "back": "back",
+    "save-success": "Saved successfully",
+    "save-fail": "Save failed"
   }
 }

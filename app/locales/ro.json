@@ -17,6 +17,8 @@
     "my-quiz": "Chestionarele mele",
     "no-file": "Încă nu sunt fișiere",
     "view": "Vizualizare",
-    "back": "înapoi"
+    "back": "înapoi",
+    "save-success": "Salvat cu succes",
+    "save-fail": "Salvarea a eșuat"
   }
 }

@@ -2,7 +2,7 @@
 import React from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useToast } from '@/app/context/toastContext'
-import { RightIcon } from '@/app/assets/icons'
+import { ExclamationMarkIcon, RightIcon } from '@/app/assets/icons'
 
 export const ToastContainer: React.FC = () => {
   const { toasts, hideToast } = useToast()
@@ -12,9 +12,9 @@ export const ToastContainer: React.FC = () => {
 
     switch (type) {
       case 'success':
-        return <RightIcon {...iconProps} className="w-5 h-5 text-green-500" />
-      // case 'error':
-      //   return <XCircle {...iconProps} className="w-5 h-5 text-red-500" />
+        return <RightIcon {...iconProps} />
+      case 'error':
+        return <ExclamationMarkIcon {...iconProps} />
       // case 'warning':
       //   return <AlertCircle {...iconProps} className="w-5 h-5 text-amber-500" />
       // case 'info':

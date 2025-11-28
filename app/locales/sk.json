@@ -17,6 +17,8 @@
     "my-quiz": "Moje kvízy",
     "no-file": "Zatiaľ žiadne súbory",
     "view": "Zobraziť",
-    "back": "späť"
+    "back": "späť",
+    "save-success": "Úspešne uložené",
+    "save-fail": "Uloženie zlyhalo"
   }
 }

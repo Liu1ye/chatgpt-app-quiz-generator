@@ -17,6 +17,8 @@
     "my-quiz": "I miei quiz",
     "no-file": "Nessun file ancora",
     "view": "Visualizza",
-    "back": "indietro"
+    "back": "indietro",
+    "save-success": "Salvato con successo",
+    "save-fail": "Salvataggio fallito"
   }
 }

@@ -17,6 +17,8 @@
     "my-quiz": "Moje quizy",
     "no-file": "Brak plików",
     "view": "Zobacz",
-    "back": "wróć"
+    "back": "wróć",
+    "save-success": "Zapisano pomyślnie",
+    "save-fail": "Zapis nie powiódł się"
   }
 }

@@ -17,6 +17,8 @@
     "my-quiz": "Moji kvizovi",
     "no-file": "Još nema fajlova",
     "view": "Pogledaj",
-    "back": "nazad"
+    "back": "nazad",
+    "save-success": "Uspešno sačuvano",
+    "save-fail": "Čuvanje nije uspelo"
   }
 }

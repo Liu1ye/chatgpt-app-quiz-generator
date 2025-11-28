@@ -17,6 +17,8 @@
     "my-quiz": "Meine Quizze",
     "no-file": "Noch keine Dateien",
     "view": "Ansehen",
-    "back": "Zurück"
+    "back": "Zurück",
+    "save-success": "Erfolgreich gespeichert",
+    "save-fail": "Speichern fehlgeschlagen"
   }
 }

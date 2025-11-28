@@ -17,6 +17,8 @@
     "my-quiz": "Mine quizer",
     "no-file": "Ingen filer ennå",
     "view": "Vis",
-    "back": "tilbake"
+    "back": "tilbake",
+    "save-success": "Lagring vellykket",
+    "save-fail": "Lagring feilet"
   }
 }

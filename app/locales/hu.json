@@ -17,6 +17,8 @@
     "my-quiz": "A kvízeim",
     "no-file": "Még nincsenek fájlok",
     "view": "Megtekintés",
-    "back": "vissza"
+    "back": "vissza",
+    "save-success": "Sikeresen mentve",
+    "save-fail": "Mentés sikertelen"
   }
 }

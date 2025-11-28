@@ -17,6 +17,8 @@
     "my-quiz": "Mina quiz",
     "no-file": "Inga filer än",
     "view": "Visa",
-    "back": "tillbaka"
+    "back": "tillbaka",
+    "save-success": "Sparad framgångsrikt",
+    "save-fail": "Sparande misslyckades"
   }
 }

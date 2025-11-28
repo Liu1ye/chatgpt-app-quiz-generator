@@ -17,6 +17,8 @@
     "my-quiz": "我的测验",
     "no-file": "还没有文件",
     "view": "查看",
-    "back": "返回"
+    "back": "返回",
+    "save-success": "保存成功",
+    "save-fail": "保存失败"
   }
 }

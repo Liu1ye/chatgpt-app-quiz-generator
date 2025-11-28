@@ -17,6 +17,8 @@
     "my-quiz": "Bài kiểm tra của tôi",
     "no-file": "Chưa có tệp nào",
     "view": "Xem",
-    "back": "quay lại"
+    "back": "quay lại",
+    "save-success": "Lưu thành công",
+    "save-fail": "Lưu thất bại"
   }
 }
