@@ -13,6 +13,10 @@
     "timeSpent": "Tid Använd",
     "retake": "Gör om Quiz",
     "hint": "Ledtråd",
-    "save": "Spara quiz"
+    "save": "Spara quiz",
+    "my-quiz": "Mina quiz",
+    "no-file": "Inga filer än",
+    "view": "Visa",
+    "back": "tillbaka"
   }
 }

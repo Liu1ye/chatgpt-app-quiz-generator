@@ -13,6 +13,10 @@
     "timeSpent": "Geçen Süre",
     "retake": "Sınavı Tekrar Al",
     "hint": "İpucu",
-    "save": "Quiz'i Kaydet"
+    "save": "Quiz'i Kaydet",
+    "my-quiz": "Quizlerim",
+    "no-file": "Henüz dosya yok",
+    "view": "Görüntüle",
+    "back": "geri"
   }
 }

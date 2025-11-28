@@ -13,6 +13,10 @@
     "timeSpent": "Thời gian đã sử dụng",
     "retake": "Làm lại bài kiểm tra",
     "hint": "Gợi ý",
-    "save": "Lưu bài kiểm tra"
+    "save": "Lưu bài kiểm tra",
+    "my-quiz": "Bài kiểm tra của tôi",
+    "no-file": "Chưa có tệp nào",
+    "view": "Xem",
+    "back": "quay lại"
   }
 }

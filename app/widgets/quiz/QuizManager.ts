@@ -209,7 +209,7 @@ export class QuizManager {
       })
     } else {
       questions = this.questions.map((item, index) => {
-        if (item.options[this.answers[index] as number].isCorrect) return null
+        if (item.options[this.answers[index] as number]?.isCorrect) return null
         return {
           ...item,
           options: item.options.map((cItem, cIndex) => {
@@ -240,6 +240,8 @@ export class QuizManager {
       },
       wisebaseId: 'inbox',
     }
+
+    console.log(payload, 'payload')
 
     return window?.openai?.callTool('fetch', {
       id: '/library/v1/quiz',

@@ -13,6 +13,10 @@
     "timeSpent": "Masa Dihabiskan",
     "retake": "Ambil Semula Kuiz",
     "hint": "Petunjuk",
-    "save": "Simpan Kuiz"
+    "save": "Simpan Kuiz",
+    "my-quiz": "Kuis Saya",
+    "no-file": "Tiada fail lagi",
+    "view": "Lihat",
+    "back": "kembali"
   }
 }

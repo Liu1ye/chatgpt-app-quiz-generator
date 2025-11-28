@@ -13,6 +13,10 @@
     "timeSpent": "Tiempo empleado",
     "retake": "Repetir cuestionario",
     "hint": "Pista",
-    "save": "Guardar cuestionario"
+    "save": "Guardar cuestionario",
+    "my-quiz": "Mis cuestionarios",
+    "no-file": "No hay archivos aún",
+    "view": "Ver",
+    "back": "volver"
   }
 }

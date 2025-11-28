@@ -13,6 +13,10 @@
     "timeSpent": "Kulutatud aeg",
     "retake": "Korda testi",
     "hint": "Vihje",
-    "save": "Salvesta viktoriin"
+    "save": "Salvesta viktoriin",
+    "my-quiz": "Minu viktoriinid",
+    "no-file": "Faile pole veel",
+    "view": "Vaata",
+    "back": "tagasi"
   }
 }

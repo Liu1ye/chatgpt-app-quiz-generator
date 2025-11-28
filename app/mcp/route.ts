@@ -5,7 +5,6 @@ import verifyToken from '../lib/verifyToken'
 import {
   registerQuizGeneratorTool,
   registerGetQuizTool,
-  registerSaveQuizTool,
   registerFetchTool,
 } from './tools'
 
@@ -29,7 +28,6 @@ const handler = createMcpHandler(async (server: McpServer) => {
   await registerQuizGeneratorTool(server, html)
   await registerGetQuizTool(server, html)
   await registerFetchTool(server)
-  await registerSaveQuizTool(server)
 })
 
 /**

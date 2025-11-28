@@ -13,6 +13,10 @@
     "timeSpent": "Tijd Besteed",
     "retake": "Quiz Herhalen",
     "hint": "Hint",
-    "save": "Quiz opslaan"
+    "save": "Quiz opslaan",
+    "my-quiz": "Mijn Quizzen",
+    "no-file": "Nog geen bestanden",
+    "view": "Bekijk",
+    "back": "terug"
   }
 }

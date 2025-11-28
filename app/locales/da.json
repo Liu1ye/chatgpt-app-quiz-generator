@@ -13,6 +13,10 @@
     "timeSpent": "Brugt Tid",
     "retake": "Tag Quiz igen",
     "hint": "Hint",
-    "save": "Gem quiz"
+    "save": "Gem quiz",
+    "my-quiz": "Mine quizzer",
+    "no-file": "Ingen filer endnu",
+    "view": "Vis",
+    "back": "tilbage"
   }
 }

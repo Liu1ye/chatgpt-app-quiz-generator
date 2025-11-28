@@ -13,6 +13,10 @@
     "timeSpent": "Waktu yang Dihabiskan",
     "retake": "Ulang Kuis",
     "hint": "Petunjuk",
-    "save": "Simpan Kuis"
+    "save": "Simpan Kuis",
+    "my-quiz": "Kuis Saya",
+    "no-file": "Belum ada file",
+    "view": "Lihat",
+    "back": "kembali"
   }
 }

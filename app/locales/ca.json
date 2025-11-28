@@ -13,6 +13,10 @@
     "timeSpent": "Temps emprat",
     "retake": "Repetir el quiz",
     "hint": "Pista",
-    "save": "Desa el qüestionari"
+    "save": "Desa el qüestionari",
+    "my-quiz": "Els meus qüestionaris",
+    "no-file": "Encara no hi ha fitxers",
+    "view": "Veure",
+    "back": "enrere"
   }
 }

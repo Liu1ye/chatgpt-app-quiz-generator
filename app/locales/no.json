@@ -13,6 +13,10 @@
     "timeSpent": "Tid brukt",
     "retake": "Ta quizen på nytt",
     "hint": "Hint",
-    "save": "Lagre quiz"
+    "save": "Lagre quiz",
+    "my-quiz": "Mine quizer",
+    "no-file": "Ingen filer ennå",
+    "view": "Vis",
+    "back": "tilbake"
   }
 }

@@ -13,6 +13,10 @@
     "timeSpent": "Tempo Gasto",
     "retake": "Refazer Quiz",
     "hint": "Dica",
-    "save": "Salvar Quiz"
+    "save": "Salvar Quiz",
+    "my-quiz": "Meus Questionários",
+    "no-file": "Nenhum arquivo ainda",
+    "view": "Ver",
+    "back": "voltar"
   }
 }

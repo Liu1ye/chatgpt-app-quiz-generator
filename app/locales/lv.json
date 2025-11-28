@@ -13,6 +13,10 @@
     "timeSpent": "Pavadītais laiks",
     "retake": "Atkārtot testu",
     "hint": "Padoms",
-    "save": "Saglabāt viktorīnu"
+    "save": "Saglabāt viktorīnu",
+    "my-quiz": "Mani testi",
+    "no-file": "Vēl nav failu",
+    "view": "Skatīt",
+    "back": "atpakaļ"
   }
 }

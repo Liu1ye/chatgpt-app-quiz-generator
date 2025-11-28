@@ -13,6 +13,10 @@
     "timeSpent": "Käytetty aika",
     "retake": "Uudelleen koe",
     "hint": "Vihje",
-    "save": "Tallenna kysely"
+    "save": "Tallenna kysely",
+    "my-quiz": "Kysymykseni",
+    "no-file": "Ei tiedostoja vielä",
+    "view": "Näytä",
+    "back": "takaisin"
   }
 }

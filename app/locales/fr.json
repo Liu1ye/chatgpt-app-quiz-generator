@@ -13,6 +13,10 @@
     "timeSpent": "Temps passé",
     "retake": "Repasser le quiz",
     "hint": "Indice",
-    "save": "Enregistrer le quiz"
+    "save": "Enregistrer le quiz",
+    "my-quiz": "Mes quiz",
+    "no-file": "Aucun fichier pour l'instant",
+    "view": "Voir",
+    "back": "retour"
   }
 }

@@ -5,6 +5,8 @@ import QuizOption from '../QuizOption'
 import HintButton from '../HintButton'
 import MathText from '../MathText'
 import { Question } from '../../types'
+import GPTButton from '@/app/components/GptButton'
+import { ArrowLeftLgIcon } from '@/app/assets/icons'
 
 interface QuizQuestionProps {
   question: Question
@@ -96,9 +98,11 @@ const QuizQuestion = ({
         {isFromList && (
           <div
             onClick={onClickBackToList && onClickBackToList}
-            className="w-full p-[18px_22px_0_22px] text-text-secondary cursor-pointer"
+            className="w-full pt-[18px] text-text-secondary cursor-pointer"
           >
-            back
+            <GPTButton variant="text" icon={<ArrowLeftLgIcon size={12} />}>
+              {t('quiz.back')}
+            </GPTButton>
           </div>
         )}
         {/* 标题 */}
@@ -142,43 +146,16 @@ const QuizQuestion = ({
             />
           </div>
           <div className="flex gap-[8px] items-center">
-            <motion.button
-              whileHover={currentQuestionIndex > 0 ? { scale: 1.05 } : {}}
-              whileTap={currentQuestionIndex > 0 ? { scale: 0.95 } : {}}
-              className={`bg-interactive-bg-secondary-default border border-interactive-border-secondary-default border-solid box-border flex gap-[4px] items-center justify-center px-[16px] py-[8px] rounded-[999px] transition-colors ${
-                currentQuestionIndex === 0
-                  ? 'opacity-50 cursor-not-allowed'
-                  : ''
-              }`}
+            <GPTButton
               onClick={onPrevious}
               disabled={currentQuestionIndex === 0}
+              variant="secondary"
             >
-              <p className="font-medium text-[14px] leading-[20px] tracking-[-0.18px] text-interactive-label-secondary-default whitespace-pre">
-                {t('quiz.previous')}
-              </p>
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              animate={selectedOption !== null ? { scale: [1, 1.02, 1] } : {}}
-              transition={{ duration: 0.3 }}
-              className={`box-border flex gap-[4px] items-center justify-center px-[16px] py-[8px] rounded-[999px] transition-colors ${
-                selectedOption !== null
-                  ? 'bg-interactive-bg-primary-default'
-                  : 'bg-interactive-bg-secondary-default border border-interactive-border-secondary-default'
-              }`}
-              onClick={onNext}
-            >
-              <p
-                className={`font-medium text-[14px] leading-[20px] tracking-[-0.18px] whitespace-pre ${
-                  selectedOption !== null
-                    ? 'text-interactive-label-primary-default'
-                    : 'text-interactive-label-secondary-default'
-                }`}
-              >
-                {isLastQuestion ? t('quiz.complete') : t('quiz.next')}
-              </p>
-            </motion.button>
+              {t('quiz.previous')}
+            </GPTButton>
+            <GPTButton onClick={onNext} disabled={isLastQuestion && isFromList}>
+              {isLastQuestion ? t('quiz.complete') : t('quiz.next')}
+            </GPTButton>
           </div>
         </div>
       </div>

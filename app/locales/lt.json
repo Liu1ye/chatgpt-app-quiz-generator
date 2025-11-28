@@ -13,6 +13,10 @@
     "timeSpent": "Praleistas laikas",
     "retake": "Pakartoti testą",
     "hint": "Užuomina",
-    "save": "Išsaugoti testą"
+    "save": "Išsaugoti testą",
+    "my-quiz": "Mano testai",
+    "no-file": "Dar nėra failų",
+    "view": "Peržiūrėti",
+    "back": "atgal"
   }
 }

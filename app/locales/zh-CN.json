@@ -13,6 +13,10 @@
     "timeSpent": "花费时间",
     "retake": "重做测验",
     "hint": "提示",
-    "save": "保存测验"
+    "save": "保存测验",
+    "my-quiz": "我的测验",
+    "no-file": "还没有文件",
+    "view": "查看",
+    "back": "返回"
   }
 }

@@ -13,6 +13,10 @@
     "timeSpent": "Čas strávený",
     "retake": "Opakovať kvíz",
     "hint": "Nápoveda",
-    "save": "Uložiť kvíz"
+    "save": "Uložiť kvíz",
+    "my-quiz": "Moje kvízy",
+    "no-file": "Zatiaľ žiadne súbory",
+    "view": "Zobraziť",
+    "back": "späť"
   }
 }

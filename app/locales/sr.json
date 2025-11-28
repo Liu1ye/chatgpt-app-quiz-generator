@@ -13,6 +13,10 @@
     "timeSpent": "Provedeno vreme",
     "retake": "Ponovo uradi kviz",
     "hint": "Savjet",
-    "save": "Sačuvaj kviz"
+    "save": "Sačuvaj kviz",
+    "my-quiz": "Moji kvizovi",
+    "no-file": "Još nema fajlova",
+    "view": "Pogledaj",
+    "back": "nazad"
   }
 }

@@ -31,3 +31,13 @@ export interface QuizCompleteProps {
   onRetake: () => void
   onSave: (type: 'all' | 'incorrect') => void
 }
+
+export interface QuizListResponse {
+  total: string
+  items: {
+    id: string
+    userId: string
+    wisebaseId: string
+    data: QuizData
+  }[]
+}

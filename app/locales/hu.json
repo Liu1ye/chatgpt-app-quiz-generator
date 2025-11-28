@@ -13,6 +13,10 @@
     "timeSpent": "Eltöltött idő",
     "retake": "Kvíz újra",
     "hint": "Javaslat",
-    "save": "Kvíz mentése"
+    "save": "Kvíz mentése",
+    "my-quiz": "A kvízeim",
+    "no-file": "Még nincsenek fájlok",
+    "view": "Megtekintés",
+    "back": "vissza"
   }
 }
