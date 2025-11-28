@@ -18,11 +18,12 @@ export interface QuizData {
   description: string
   language?: string
   questions: Question[]
-  error: number[]
+  error?: number[]
   createdAt?: string
 }
 
 export interface QuizCompleteProps {
+  loading: boolean
   score: number
   totalQuestions: number
   accuracy: number

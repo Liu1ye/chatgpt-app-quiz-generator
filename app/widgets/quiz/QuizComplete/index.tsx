@@ -4,12 +4,14 @@ import { useTranslation } from 'react-i18next'
 import { QuizCompleteProps } from '../../types'
 import { useState } from 'react'
 import TrophyImg from '@/app/assets/icons/trophy.png'
+import GPTButton from '@/app/components/GptButton'
 
 const QuizComplete = ({
   score,
   totalQuestions,
   accuracy,
   elapsedTime,
+  loading,
   onRetake,
   onSave,
 }: QuizCompleteProps) => {
@@ -161,16 +163,13 @@ const QuizComplete = ({
               )}
             </AnimatePresence>
 
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-interactive-bg-primary-default w-[160px] py-[8px] rounded-full transition-colors"
-              onClick={() => setShowSaveMenu(!showSaveMenu)}
+            <GPTButton
+              className="w-[160px]"
+              onClick={() => setShowSaveMenu(true)}
+              loading={loading}
             >
-              <p className="font-medium text-interactive-label-primary-default text-[14px] leading-[20px] tracking-[-0.18px] whitespace-pre">
-                {t('quiz.save')}
-              </p>
-            </motion.button>
+              {t('quiz.save')}
+            </GPTButton>
           </motion.div>
 
           {/* Retake Button */}
@@ -180,16 +179,14 @@ const QuizComplete = ({
             transition={{ delay: 1.3, duration: 0.3 }}
             className="flex gap-[8px] items-center"
           >
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-interactive-bg-secondary-default border border-interactive-border-secondary-default border-solid box-border w-[160px] py-[8px] rounded-full transition-colors"
+            <GPTButton
+              variant="secondary"
+              className="w-[160px]"
               onClick={onRetake}
             >
-              <p className="font-medium text-[14px] leading-[20px] tracking-[-0.18px] text-interactive-label-secondary-default whitespace-pre">
-                {t('quiz.retake')}
-              </p>
-            </motion.button>
+              {' '}
+              {t('quiz.retake')}
+            </GPTButton>
           </motion.div>
         </div>
       </div>
@@ -236,7 +233,7 @@ const SaveMenu = ({ onSelect, onClose }: SaveMenuProps) => {
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: index * 0.05 }}
-              className="w-[215px] p-[10px_8px_10px_10px] rounded-[6px] cursor-pointer hover:bg-bg-secondary transition-colors"
+              className="w-[215px] p-[10px_8px_10px_10px] rounded-[12px] cursor-pointer hover:bg-bg-secondary transition-colors"
               onClick={() => onSelect(item.key)}
             >
               <p className="font-medium text-[14px] leading-[20px] tracking-[-0.18px] text-text-primary">

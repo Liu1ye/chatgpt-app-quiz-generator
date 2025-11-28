@@ -1,4 +1,4 @@
-import { baseURL } from '@/baseUrl'
+import { baseURL } from '@/app/baseUrl'
 import { createMcpHandler, withMcpAuth } from 'sider-mcp-handler'
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import verifyToken from '../lib/verifyToken'
@@ -36,9 +36,9 @@ const handler = createMcpHandler(async (server: McpServer) => {
  * 包装认证处理
  */
 const authHandler = withMcpAuth(handler, verifyToken, {
-  required: true, // 允许未认证访问（quiz-generator 不需要认证）
-  requiredScopes: ['read:stuff'], // 必需的权限范围
-  resourceMetadataPath: '/.well-known/oauth-protected-resource', // OAuth 元数据路径
+  required: true,
+  requiredScopes: ['read:stuff'],
+  resourceMetadataPath: '/.well-known/oauth-protected-resource',
 })
 
 export const GET = authHandler

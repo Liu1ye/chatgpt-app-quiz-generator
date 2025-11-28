@@ -1,4 +1,4 @@
-import { baseURL } from '@/baseUrl'
+import { baseURL } from '@/app/baseUrl'
 
 /**
  * 返回需要认证的错误响应

@@ -33,7 +33,7 @@ export const ToastContainer: React.FC = () => {
             animate={{ x: 0, y: 0, opacity: 1, scale: 1 }}
             exit={{ x: 400, opacity: 0, scale: 0.8 }}
             transition={{ type: 'spring', stiffness: 300, damping: 25 }}
-            className="min-w-[300px] px-4 py-3 rounded-xl bg-white shadow-lg border border-gray-100 flex items-center gap-3 cursor-pointer hover:shadow-xl transition-shadow"
+            className="px-4 py-2.5 rounded-xl bg-white shadow-lg border border-gray-100 flex items-center gap-3 cursor-pointer hover:shadow-xl transition-shadow"
             onClick={() => hideToast(toast.id)}
           >
             {getIcon(toast.type)}

@@ -1,5 +1,5 @@
 import type { NextConfig } from 'next'
-import { baseURL } from '@/baseUrl'
+import { baseURL } from '@/app/baseUrl'
 
 const createSvgTemplate = (variables: any, { tpl }: any) => {
   return tpl`

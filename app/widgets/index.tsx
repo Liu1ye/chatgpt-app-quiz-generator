@@ -9,7 +9,7 @@ const WIDGETS: Record<string, React.ComponentType> = {
   'quiz-list': QuizList,
 }
 
-const DEFAULT_WIDGET = 'quiz-list'
+const DEFAULT_WIDGET = 'quiz'
 
 const WidgetSelector = () => {
   const widgetProps = useWidgetProps<{ type?: string }>()

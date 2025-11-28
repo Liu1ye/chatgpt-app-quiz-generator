@@ -1,6 +1,4 @@
-import { API_URL } from '../lib/constant'
-import { QuizData } from '../widgets/quiz/types'
-import mockData from './mock.json'
+import { apiURL } from '../baseUrl'
 
 export const appName = 'ChitChat_Web'
 export const appVersion = '1.0.0'
@@ -25,7 +23,7 @@ export type SiderUserInfo = {
 }
 
 export async function request(pathname: string, options?: RequestInit) {
-  const url = pathname.startsWith('http') ? pathname : API_URL + pathname
+  const url = pathname.startsWith('http') ? pathname : apiURL + pathname
   console.log('request: ', url)
   return fetch(url, {
     method: options?.method || 'GET',
@@ -48,33 +46,4 @@ export async function getUserInfo(accessToken: string): Promise<SiderUserInfo> {
   })
 
   return await result.json()
-}
-
-export async function saveQuiz(quizData: QuizData, token: string) {
-  // const result = await request('/', {
-  //   method: 'POST',
-  //   headers: {
-  //     Authorization: `Bearer ${token}`,
-  //   }
-  // })
-  // return await result.json
-
-  // mock
-  const result = await new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(mockData)
-    }, 1000)
-  })
-
-  return result
-}
-
-export async function getQuiz(token: string) {
-  const result = await request('/', {
-    method: 'GET',
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  })
-  return await result.json
 }

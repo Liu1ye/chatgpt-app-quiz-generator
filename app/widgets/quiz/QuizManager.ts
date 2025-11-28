@@ -238,21 +238,13 @@ export class QuizManager {
         error,
         type,
       },
+      wisebaseId: 'inbox',
     }
 
     return window?.openai?.callTool('fetch', {
-      id: '/api/library/v1/resources/global/search',
-      method: 'GET',
-      payload: {},
-      queryParams: {
-        page: 1,
-        pageSize: 20,
-      },
-      header: {
-        'X-App-Name': 'ChitChat_Web',
-        'X-App-Version': '1.0.0',
-        'X-TZ-Name': 'Asia/Shanghai',
-      },
+      id: '/library/v1/quiz',
+      method: 'POST',
+      payload,
     })
   }
 }

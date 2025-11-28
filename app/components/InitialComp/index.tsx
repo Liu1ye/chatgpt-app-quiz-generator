@@ -24,8 +24,8 @@ const InitialComp = ({ children }: { children: React.ReactNode }) => {
     <I18nextProvider i18n={i18n}>
       <ToastProvider>
         <ToastContainer />
+        {children}
       </ToastProvider>
-      {children}
     </I18nextProvider>
   )
 }

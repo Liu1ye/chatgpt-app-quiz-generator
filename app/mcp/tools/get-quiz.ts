@@ -1,5 +1,5 @@
 import createAuthRequired from '@/app/lib/createAuthRequired'
-import { baseURL } from '@/baseUrl'
+import { baseURL } from '@/app/baseUrl'
 import { McpServer } from '@modelcontextprotocol/sdk/server/mcp.js'
 import { z } from 'zod'
 import { ContentWidget, widgetMeta } from './types'

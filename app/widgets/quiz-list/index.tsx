@@ -2,18 +2,40 @@ import ListItem from './QuizListItem'
 import mockData from '../../api/mock2.json'
 import { QuizData } from '../types'
 import Quiz from '../quiz'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ArrowRightLgIcon, ArrowLeftLgIcon } from '@/app/assets/icons'
 import GPTButton from '@/app/components/GptButton'
+import { useCallTool } from '@/app/hooks'
 
 const QuizList = () => {
   const data = mockData.data
 
   const [currentQuiz, setCurrentQuiz] = useState<null | QuizData>(null)
+  const callTool = useCallTool()
 
   const handleClickItem = (qd: QuizData) => {
     setCurrentQuiz(qd)
   }
+
+  useEffect(() => {
+    getDataList()
+  }, [])
+
+  const getDataList = async () => {
+    const res = await callTool('fetch', {
+      id: '/library/v1/quizzes',
+      method: 'GET',
+      queryParams: {
+        page: '1',
+        pageSize: '10',
+        wisebaseId: 'inbox',
+      },
+    })
+
+    console.log(res, 'rerere')
+  }
+
+  const [currentPage, setCurrentPage] = useState(1)
 
   return (
     <>

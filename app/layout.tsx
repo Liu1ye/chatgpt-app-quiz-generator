@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import '@/app/styles/globals.css'
-import { baseURL } from '@/baseUrl'
+import { baseURL } from '@/app/baseUrl'
 import InitialComp from './components/InitialComp'
 
 export const metadata: Metadata = {

@@ -1,0 +1,91 @@
+{
+  "language": "zh-CN",
+  "type": "quiz",
+  "data": {
+    "title": "泰勒公式测试题",
+    "description": "考察泰勒公式的定义、展开和误差项",
+    "questions": [
+      {
+        "id": "q1",
+        "question": "函数$f(x)=e^x$在$x=0$处的泰勒展开式为？",
+        "hint": "使用$e^x$的经典幂级数",
+        "options": [
+          {
+            "text": "$1+x+\\frac{x^2}{2!}+\\frac{x^3}{3!}+\\cdots$",
+            "isCorrect": true,
+            "explanation": "正确。"
+          },
+          {
+            "text": "$1-x+\\frac{x^2}{2}-\\frac{x^3}{6}+\\cdots$",
+            "isCorrect": false,
+            "explanation": "错误。"
+          },
+          {
+            "text": "$x+\\frac{x^2}{2}+\\frac{x^3}{6}+\\cdots$",
+            "isCorrect": false,
+            "explanation": "缺少常数项。"
+          },
+          {
+            "text": "$1+\\frac{x^2}{2!}+\\frac{x^4}{4!}+\\cdots$",
+            "isCorrect": false,
+            "explanation": "偶次项错误。"
+          }
+        ]
+      },
+      {
+        "id": "q2",
+        "question": "函数$f(x)=\\ln(1+x)$在$x=0$处的泰勒展开式正确的是？",
+        "hint": "$\\ln(1+x)$是交替级数",
+        "options": [
+          {
+            "text": "$x-\\frac{x^2}{2}+\\frac{x^3}{3}-\\frac{x^4}{4}+\\cdots$",
+            "isCorrect": true,
+            "explanation": "正确。"
+          },
+          {
+            "text": "$1+x+\\frac{x^2}{2}+\\cdots$",
+            "isCorrect": false,
+            "explanation": "这是$e^x$。"
+          },
+          {
+            "text": "$x+\\frac{x^3}{3}+\\frac{x^5}{5}+\\cdots$",
+            "isCorrect": false,
+            "explanation": "缺项且符号错。"
+          },
+          {
+            "text": "$-x+\\frac{x^2}{2}-\\frac{x^3}{3}+\\cdots$",
+            "isCorrect": false,
+            "explanation": "符号整体错误。"
+          }
+        ]
+      },
+      {
+        "id": "q3",
+        "question": "拉格朗日余项$R_n(x)$的正确形式是？",
+        "hint": "含有某个$\\xi$",
+        "options": [
+          {
+            "text": "$R_n(x)=\\frac{f^{(n+1)}(\\xi)}{(n+1)!}(x-a)^{n+1}$",
+            "isCorrect": true,
+            "explanation": "正确。"
+          },
+          {
+            "text": "$R_n(x)=f^{(n)}(a)(x-a)^n$",
+            "isCorrect": false,
+            "explanation": "错误。"
+          },
+          {
+            "text": "$R_n(x)=0$",
+            "isCorrect": false,
+            "explanation": "一般不为0。"
+          },
+          {
+            "text": "$R_n(x)=f(a)(x-a)$",
+            "isCorrect": false,
+            "explanation": "不符合定义。"
+          }
+        ]
+      }
+    ]
+  }
+}

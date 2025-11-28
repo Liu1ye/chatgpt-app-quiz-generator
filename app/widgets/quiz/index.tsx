@@ -7,6 +7,7 @@ import QuizComplete from './QuizComplete'
 import { QuizManager } from './QuizManager'
 import { QuizData } from '../types'
 import { Skeleton } from '@/app/components/Skeleton'
+import { useToast } from '@/app/context/toastContext'
 
 type QuizProps = {
   quizDataFromList?: QuizData
@@ -19,13 +20,13 @@ const Quiz: FC<QuizProps> = (props) => {
 
   const widgetProps = useWidgetProps<{ language?: string; data?: QuizData }>()
   const quizData = quizDataFromList || widgetProps?.data
+  const { showToast } = useToast()
+  const [saveLoading, setSaveLoading] = useState<boolean>(false)
 
   const quizManager = useMemo(() => {
     if (!quizData?.questions?.length) return null
     return new QuizManager(quizData, isFromList)
   }, [quizData?.questions])
-
-  console.log(quizData, 'quizData')
 
   const [showHint, setShowHint] = useState(false)
   const [isCompleted, setIsCompleted] = useState(false)
@@ -65,21 +66,6 @@ const Quiz: FC<QuizProps> = (props) => {
   }, [quizManager, forceUpdate])
 
   const handleToggleHint = useCallback(() => {
-    const res = window?.openai?.callTool('fetch', {
-      id: '/api/library/v1/resources/global/search',
-      method: 'GET',
-      payload: {},
-      queryParams: {
-        page: '1',
-        pageSize: '20',
-      },
-      headers: {
-        'X-App-Name': 'ChitChat_Web',
-        'X-App-Version': '1.0.0',
-        'X-TZ-Name': 'Asia/Shanghai',
-      },
-    })
-    console.log(res, 'fffff')
     setShowHint((prev) => !prev)
   }, [])
 
@@ -93,8 +79,15 @@ const Quiz: FC<QuizProps> = (props) => {
   }, [quizManager, forceUpdate])
 
   const handleSave = async (type: 'all' | 'incorrect') => {
-    const res = await quizManager?.save(type)
-    console.log(res, 'rrrrr')
+    setSaveLoading(true)
+    try {
+      const res = (await quizManager?.save(type)) as any
+      if (res?.structuredContent?.response?.code === 0) {
+        showToast('Saved successfully', 'success', 2000)
+      }
+    } finally {
+      setSaveLoading(false)
+    }
   }
 
   // 加载状态
@@ -112,6 +105,7 @@ const Quiz: FC<QuizProps> = (props) => {
         elapsedTime={quizManager.getElapsedTime()}
         onRetake={handleRetake}
         onSave={handleSave}
+        loading={saveLoading}
       />
     )
   }
