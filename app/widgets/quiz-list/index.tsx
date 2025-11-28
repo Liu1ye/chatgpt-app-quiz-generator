@@ -166,8 +166,8 @@ const QuizList = () => {
 
       {/* 列表内容 */}
       <div className="flex-1 overflow-y-auto">
-        {currentPageData.length > 0 ? (
-          currentPageData.map((item) => (
+        {dataList.length > 0 ? (
+          dataList.map((item) => (
             <ListItem key={item.id} item={item} onClick={handleClickItem} />
           ))
         ) : (
@@ -183,7 +183,7 @@ const QuizList = () => {
       </div>
 
       {/* 分页控制 */}
-      {currentPageData.length > 0 ? (
+      {dataList.length > 0 ? (
         <div className="flex items-center justify-between p-[12px_10px_12px_12px] border-t-[1px] border-solid border-border-heavy">
           <div className="text-text-secondary text-[14px]">
             {currentPage} / {totalPages || 1}
